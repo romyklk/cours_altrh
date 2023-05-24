@@ -299,3 +299,134 @@ SELECT MAX(salaire) FROM employes;
 
 SELECT prenom FROM employes WHERE salaire = 
           (SELECT MIN(salaire) FROM employes); -- une requête imbriquée car si je ne proccède pas ainsi, je vais avoir un résultat erroné
+
+
+## IN : permet de sélectionner des données en fonction d'une liste de valeurs
+
+-- Afficher tous les employés du service commercial et du service production
+
+SELECT * FROM employes WHERE service IN('commercial', 'production');
+
+/* 
+IN permet d'inclure plusieurs valeurs dans une requête. 
+= permet d'inclure une seule valeur dans une requête.
+*/
+
+## NOT IN : permet de sélectionner des données en fonction d'une liste de valeurs exclues
+
+-- Afficher tous les employés sauf ceux du service commercial et du service production 
+
+SELECT * FROM employes WHERE service NOT IN('commercial', 'production');
+
+/* 
+NOT IN permet d'exclure plusieurs valeurs dans une requête.
+!= permet d'exclure une seule valeur dans une requête.
+ */
+
+## GROUP BY : permet de regrouper des données en fonction d'une colonne
+
+# Sa synthaxe est :
+SELECT colonne1, colonne2, colonne3 FROM nom_de_la_table GROUP BY colonne;
+
+-- Afficher le nombre d'employés par service
+
+SELECT service,COUNT(*) FROM employes GROUP BY service;
+
+## HAVING : permet de filtrer les données regroupées.On l'utilise toujours avec GROUP BY pour ajouter une condition de filtrage.
+
+# Sa synthaxe est :
+
+SELECT colonne1, colonne2, colonne3 FROM nom_de_la_table GROUP BY colonne HAVING condition;
+
+-- Afficher le nombre d'employés par service qui ont un salaire supérieur à 2000
+
+SELECT salaire,service,COUNT(*) FROM employes GROUP BY service HAVING salaire > 2000;
+
+
+## AS : permet de renommer une colonne ou une table dans une requête
+
+SELECT
+    salaire,
+    service,
+    COUNT(*) AS "nombre employes"
+FROM employes
+GROUP BY service
+HAVING salaire > 2000;
+
+## Dans le AS , si le nom comporte plus d'un mot, il faut le mettre entre guillemets ou séparer les mots par un underscore.
+
+
+############### REQUETES D'IINSETION(INSERT INTO) ###############
+
+## INSERT INTO : permet d'insérer des données dans une table.
+
+# Sa synthaxe est :
+INSERT INTO nom_de_la_table(colonne1, colonne2, colonne3) VALUES(valeur1, valeur2, valeur3);
+
+
+-- Insérer un nouvel employé dans la table employes
+
+INSERT INTO employes(id_employes,prenom,nom,sexe,service,date_embauche,salaire) VALUES(999,'Jean','Dupont','m','production','2019-01-01',2000);
+
+-- Insérer un nouvel employé dans la table employes sans préciser l'id_employes
+
+INSERT INTO employes(prenom,nom,sexe,service,date_embauche,salaire) VALUES('Anne','DUBOIS','f','production','2019-01-01',2450);
+
+############### REQUETES DE MODIFICATION(UPDATE) ###############
+
+## UPDATE : permet de modifier des données dans une table.
+
+# Sa synthaxe est :
+UPDATE nom_de_la_table SET colonne1 = valeur1, colonne2 = valeur2 WHERE condition;
+
+-- Mettre à jour le salaire de l'employé ayant l'id_employes 999 à 1500
+
+UPDATE employes SET salaire = 1500 WHERE id_employes = 999;
+
+-- Ajouter 100 sur le salaire des employés du service informatique
+
+UPDATE employes SET salaire = salaire + 100 WHERE service = 'informatique';
+
+-- Mettre à jour le nom et le prénom de l'emplyé ayant l'id_employes 999 à Jhon DOE
+
+UPDATE employes SET nom = 'DOE', prenom = 'Jhon' WHERE id_employes = 999;
+
+## REPLACE INTO : qui permet de remplacer une ligne existante par une nouvelle ligne.Si la ligne n'existe pas, elle est ajoutée.Donc elle se comporte comme un INSERT INTO si l'enregistrement n'existe pas et comme un UPDATE si l'enregistrement existe.
+
+# Sa synthaxe est :
+
+REPLACE INTO nom_de_la_table(colonne1, colonne2, colonne3) VALUES(valeur1, valeur2, valeur3);
+
+-- Mettre à jour le salaire de l'emplyé ayant l'id_employes 1000 à 2315
+
+REPLACE INTO  employes(id_employes,prenom,nom,sexe,service,date_embauche,salaire) VALUES(1000,'Anne','DUBOIS','f','production','2019-01-01',2315);
+
+
+REPLACE INTO  employes(id_employes,prenom,nom,sexe,service,date_embauche,salaire) VALUES(1002,'Anne','DUBOIS','f','production','2019-01-01',2315); -- l'enregistrement n'existe pas donc il est ajouté dans la table 
+
+
+############### REQUETES DE SUPPRESSION(DELETE) ###############
+
+## DELETE : permet de supprimer des données dans une table.
+
+# Sa synthaxe est :
+
+DELETE FROM nom_de_la_table WHERE condition;
+
+-- Supprimer tous les employes dont le prenom commence par J
+DELETE FROM employes WHERE prenom LIKE 'J%';
+-- Supprimer l'employé ayant l'id_employes 1000 
+DELETE FROM employes WHERE id_employes = 1000;
+
+-- Supprimer l'employé dont le nom est collier  
+DELETE FROM employes WHERE nom = 'collier';
+
+-- Supprimer tous les employés sauf ceux du service informatique et production
+DELETE FROM employes WHERE  service != 'informatique' AND service != 'production';
+-- OU 
+DELETE FROM employes WHERE  service NOT IN('informatique','production');
+
+-- Supprimer tous les employés
+DELETE FROM employes;
+-- OU
+TRUNCATE TABLE employes; -- TRUNCATE TABLE est plus rapide que DELETE FROM car il ne conserve pas les données supprimées dans le cache
