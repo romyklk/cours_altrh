@@ -363,7 +363,6 @@ HAVING salaire > 2000;
 # Sa synthaxe est :
 INSERT INTO nom_de_la_table(colonne1, colonne2, colonne3) VALUES(valeur1, valeur2, valeur3);
 
-
 -- Insérer un nouvel employé dans la table employes
 
 INSERT INTO employes(id_employes,prenom,nom,sexe,service,date_embauche,salaire) VALUES(999,'Jean','Dupont','m','production','2019-01-01',2000);
