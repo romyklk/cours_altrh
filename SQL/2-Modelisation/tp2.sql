@@ -88,7 +88,7 @@ Question 7 : Affichez les villes différentes recherchées par les personnes dem
 */
 
 /*
-Question 8 : Affichez le nombre de biens à vendre par ville
+Question 8 : Affichez le nombre de biens à vendre par ville pour les demande d’achat 
 +----------+--------+
 | ville    | nombre |
 +----------+--------+
@@ -113,6 +113,14 @@ Question 9 : Quelles sont les id des logements destinés à la location ?
 |       5961 |
 +------------+
 */ 
+SHOW TABLES;
+
+DESC agence;
+DESC logement;
+DESC logement_agence;
+DESC logement_personne;
+DESC personne;
+DESC demande;
 
 /*
 Question 10 : Quels sont les id des logements entre 20 et 30m² ?
@@ -149,6 +157,7 @@ Question 13 : L’agence Orpi souhaite diminuer les frais qu’elle applique sur
 Query OK, 1 row affected
 
 */ 
+
 
 /*
 Question 14 : Quels sont les logements gérés par l’agence « laforet »
@@ -472,9 +481,6 @@ Question 35 : Affichez les prénoms des acheteurs potentiels, les prénoms des v
 | jonathan | appartement     | paris           |     650000 |             60 | vente               | century21           | lola      | appartement   | paris         |     538455 |                 60 | vente             |
 +----------+-----------------+-----------------+------------+----------------+---------------------+---------------------+-----------+---------------+---------------+------------+--------------------+-------------------+
 */ 
-
-
-
 
 
 
