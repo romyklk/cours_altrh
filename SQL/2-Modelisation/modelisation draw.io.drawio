@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2023-05-25T08:05:16.852Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.50" etag="vHo3d7365VnVGyO4zssB" version="21.3.3" type="device">
+  <diagram name="Page-1" id="9Cix3NjwzJUUnlOoM0XH">
+    <mxGraphModel dx="483" dy="484" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MUA200xPDnGpv-ne5PZi-1" value="Abonne" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-2" value="id_abonne" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-1">
+          <mxGeometry y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-3" value="prenom" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-1">
+          <mxGeometry x="5" y="60" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-4" value="livre" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="120" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-5" value="id_livre" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-4">
+          <mxGeometry x="10" y="30" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-6" value="titre" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-4">
+          <mxGeometry x="10" y="60" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-7" value="auteur" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-4">
+          <mxGeometry x="5" y="90" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-8" value="Emprunt" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="260" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-9" value="id_emprunt" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-8">
+          <mxGeometry y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-10" value="date_sortie" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-8">
+          <mxGeometry y="60" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-11" value="date_rendu" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-8">
+          <mxGeometry y="85" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-12" value="id_abonne" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-8">
+          <mxGeometry y="108" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MUA200xPDnGpv-ne5PZi-13" value="id_livre" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="MUA200xPDnGpv-ne5PZi-8">
+          <mxGeometry y="128" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

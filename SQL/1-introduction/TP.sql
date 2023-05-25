@@ -228,7 +228,11 @@ LIMIT 1;
  */
 
 -- 18 -- Afficher le prénom du comptable gagnant le meilleur salaire
-
+SELECT prenom
+FROM employes
+WHERE service = "comptabilite"
+ORDER BY salaire DESC
+LIMIT 1;
 /* 
  +---------+
  | prenom  |
@@ -238,7 +242,11 @@ LIMIT 1;
  */
 
 -- 19 -- Afficher le prénom de l'informaticien ayant été recruté en premier
-
+SELECT *
+FROM employes
+WHERE service = 'informatique'
+ORDER BY date_embauche ASC
+LIMIT 1;
 /* 
  +-------------+---------+--------+------+--------------+---------------+---------+
  | id_employes | prenom  | nom    | sexe | service      | date_embauche | salaire |
@@ -248,5 +256,7 @@ LIMIT 1;
  */
 
 -- 20 -- Augmenter chaque employé de 100 €
+UPDATE employes SET salaire = salaire + 100;
 
 -- 21 -- Supprimer les employés du service secrétariat
+DELETE FROM employes WHERE service = 'secretariat';
