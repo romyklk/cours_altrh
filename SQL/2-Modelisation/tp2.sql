@@ -400,7 +400,19 @@ Question 24 : Affichez les id des biens en location, les prix, suivis des frais 
 | bouygues immobilier |       5961 |   890 |
 +---------------------+------------+-------+
 */ 
-
+SELECT
+    a.nom,
+    l.idLogement,
+    la.frais
+FROM
+    logement_agence la,
+    logement l,
+    agence a
+WHERE
+    la.idLogement = l.idLogement
+    AND l.categorie = 'location'
+    AND la.idAgence = a.idAgence
+ORDER BY l.prix;    
 /*
 Question 25 : Quel est le prénom du propriétaire proposant le logement le moins cher à louer ?
 +--------+
@@ -409,7 +421,19 @@ Question 25 : Quel est le prénom du propriétaire proposant le logement le moin
 | johan  |
 +--------+
 */ 
-
+SELECT prenom
+FROM personne
+WHERE idPersonne = (
+        SELECT idPersonne
+        FROM logement_personne
+        WHERE idLogement = (
+                SELECT idLogement
+                FROM logement
+                WHERE categorie = 'location'
+                ORDER BY prix
+                LIMIT 1
+            )
+    );  
 /*
 Question 26 : Affichez le prénom et la ville où se trouve le logement de chaque propriétaire
 +------------+----------+
@@ -445,7 +469,14 @@ Question 26 : Affichez le prénom et la ville où se trouve le logement de chaqu
 | alexis     | paris    |
 +------------+----------+
 */ 
-
+SELECT p.prenom, l.ville
+FROM
+    personne p,
+    logement l,
+    logement_personne lp
+WHERE
+    p.idPersonne = lp.idPersonne
+    AND l.idLogement = lp.idLogement;   
 /*
 Question 27 : Quel est l’agence immobilière s’occupant de la plus grande gestion de logements répertoriés à Paris ? (alias : nombre, classement : trié par ordre décroissant)
 +---------------------+--------+
@@ -460,7 +491,16 @@ Question 27 : Quel est l’agence immobilière s’occupant de la plus grande ge
 | guy-hoquet          |      1 |
 +---------------------+--------+
 */ 
-
+SELECT a.nom, COUNT(l.ville)
+FROM
+    agence a,
+    logement_agence la,
+    logement l
+WHERE
+    a.idAgence = la.idAgence
+    AND la.idLogement = l.idLogement
+    AND l.ville = 'Paris'
+GROUP BY a.nom; 
 /*
 Question 28 : Affichez le prix et le prénom des vendeurs dont les logements sont proposés à 130000 € ou moins en prix final avec frais appliqués par les agences (alias : prix final, classement : ordre croissant des prix finaux) :
 +----------+------------+
@@ -475,7 +515,20 @@ Question 28 : Affichez le prix et le prénom des vendeurs dont les logements son
 | florian  |     127995 |
 +----------+------------+
 */ 
-
+SELECT
+    p.prenom, (l.prix + la.frais) as 'prix final'
+FROM
+    personne p,
+    logement l,
+    logement_agence la,
+    logement_personne lp
+WHERE (l.prix + la.frais) <= 130000
+    AND p.idPersonne = lp.idPersonne
+    AND l.idLogement = la.idLogement
+    AND l.categorie = 'vente'
+    AND lp.idLogement = l.idLogement
+    AND lp.idLogement = la.idLogement
+ORDER BY (l.prix + la.frais);   
 
 /*
 Question 29 : Affichez le nombre de logements à la vente dans la ville de recherche de « hugo » (alias : nombre)
@@ -485,7 +538,17 @@ Question 29 : Affichez le nombre de logements à la vente dans la ville de reche
 |     10 |
 +--------+
 */ 
-
+SELECT
+    COUNT(l.ville) AS 'nombre'
+FROM
+    demande d,
+    personne p,
+    logement l
+WHERE
+    p.prenom = 'hugo'
+    AND p.idPersonne = d.idPersonne
+    AND l.ville = d.ville
+    AND l.categorie = 'vente';  
 /*
 Question 30 : Affichez le nombre de logements à la vente dans la ville de recherche de « hugo » et dans la superficie minimum qu’il attend ou dans une superficie supérieure (alias : nombre):
 +--------+
@@ -494,7 +557,18 @@ Question 30 : Affichez le nombre de logements à la vente dans la ville de reche
 |      6 |
 +--------+
 */ 
-
+SELECT
+    COUNT(l.idLogement) as 'nombre'
+FROM
+    personne p,
+    demande d,
+    logement l
+WHERE
+    p.idPersonne = d.idPersonne
+    AND d.ville = l.ville
+    AND d.superficie <= l.superficie
+    AND p.prenom = 'hugo'
+    AND l.categorie = 'vente';  
 /*
 Question 31 : Affichez le nombre d’opportunités d’achats dans la ville de recherche de « hugo » dans la superficie minimum qu’il attend ou dans une superficie supérieure et en prenant en compte tous ses autres critères de sélection (alias : nombre):
 +--------+
@@ -502,8 +576,23 @@ Question 31 : Affichez le nombre d’opportunités d’achats dans la ville de r
 +--------+
 |      2 |
 +--------+
-*/ 
-
+*/  
+SELECT
+    COUNT(l.ville) AS 'nombre'
+FROM
+    demande d,
+    personne p,
+    logement l,
+    logement_agence la
+WHERE
+    p.prenom = 'hugo'
+    AND p.idPersonne = d.idPersonne
+    AND l.ville = d.ville
+    AND l.categorie = 'vente'
+    AND l.superficie >= d.superficie
+    AND d.genre = l.genre
+    AND d.budget >= (l.prix + la.frais)
+    AND la.idLogement = l.idLogement;
 /*
 Question 32 : Affichez les prénoms des personnes souhaitant accéder à un logement en location sur la ville de Paris
 +--------+-----------------+-----------------+------------+----------------+---------------------+------------+------------+---------------+---------------+------------+--------------------+-------------------+
