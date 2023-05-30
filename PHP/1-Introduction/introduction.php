@@ -357,3 +357,44 @@ $message = match($color){
 };
 
 echo $message;
+
+echo "<hr><h2>Fonctions prédéfinies</h2>";
+// Une fonction prédéfinie est une fonction qui est déjà déclarée dans le langage et que l'on peut utiliser directement.
+
+//strpos() : permet de trouver la position d'un caractère dans une chaine de caractères.Cette fonction retourne false si le caractère n'est pas trouvé ou la position de la première occurence du caractère dans la chaine.
+$email = "monmail@site.com";
+echo strpos($email, "@"); // affiche 7 en partant de 0 car @ est à la 7ème position dans la chaine de caractères.
+echo "<br>";
+var_dump(strpos($email, "p")); //Grâce à var_dump(), on peut voir que la fonction retourne false car il n'y a pas de p dans la chaine de caractères.
+
+// date() : permet de formater une date. Cette fonction retourne la date du jour au format souhaité.
+
+echo date("d/m/Y") . "<br>"; // affiche la date du jour au format jour/mois/année(avec 2 chiffres pour le jour, 2 chiffres pour le mois et 4 chiffres pour l'année).
+//Y : année sur 4 chiffres
+//y : année sur 2 chiffres
+
+//strlen() : Permet de compter le nombre de caractères dans une chaine de caractères. Cette fonction retourne le nombre de caractères dans la chaine.
+$contenu = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.";
+echo strlen($contenu) . "<br>"; // affiche 78 car il y a 78 caractères dans la chaine de caractères.
+
+//substr() : permet de couper une partie d'une chaine de caractères. Cette fonction retourne la partie de la chaine de caractères qui a été coupée.
+
+$texte ="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
+echo substr($texte, 0, 80) . "... <a href='#'>Lire la suite</a>"; // affiche les 80 premiers caractères de la chaine de caractères.
+// le premier argument correspond à la chaine de caractères à couper.
+// le second argument correspond à la position de départ.
+// le troisième argument correspond au nombre de caractères à afficher.
+echo "<br>";
+//!\\ PHP 8 : On peut utiliser la fonction str_contains() pour vérifier si une chaine de caractères contient un autre chaine de caractères. Cette fonction retourne true si la chaine de caractères est trouvée, sinon elle retourne false.
+
+echo str_contains($texte, "Lorem"); // retourne true car la chaine de caractères "Lorem" est trouvée dans la chaine de caractères $texte.
+
+//str_starts_with() : permet de vérifier si une chaine de caractères commence par une autre chaine de caractères. Cette fonction retourne true si la chaine de caractères est trouvée, sinon elle retourne false.
+
+var_dump(str_starts_with($texte, "bonjour")); // retourne false car la chaine de caractères "bonjour" n'est pas trouvée dans la chaine de caractères $texte.
+
+//str_ends_with() : permet de vérifier si une chaine de caractères se termine par une autre chaine de caractères. Cette fonction retourne true si la chaine de caractères est trouvée, sinon elle retourne false.
+
+var_dump(str_ends_with($texte, "Ipsum.")); // retourne true car la chaine de caractères "Ipsum." est trouvée dans la chaine de caractères $texte.
+
