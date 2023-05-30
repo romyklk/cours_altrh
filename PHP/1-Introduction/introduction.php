@@ -398,3 +398,72 @@ var_dump(str_starts_with($texte, "bonjour")); // retourne false car la chaine de
 
 var_dump(str_ends_with($texte, "Ipsum.")); // retourne true car la chaine de caractères "Ipsum." est trouvée dans la chaine de caractères $texte.
 
+
+echo "<hr><h2>Fonctions utilisateur</h2>";
+// Une fonction utilisateur est une fonction déclarée par l'utilisateur et qui peut être utilisée dans le script pour résoudre un problème particulier.
+
+// Pour déclarer une fonction, on utilise le mot-clé function suivi du nom de la fonction
+
+function sayHello() // Ici je déclare la fonction sayHello
+{
+    echo "Hello world <br><hr>";
+}
+
+// Pour exécuter une fonction, on l'appelle par son nom suivi d'une paire de parenthèses.
+sayHello();
+
+
+echo '<b>Fonction avec paramètre</b><br>';
+
+function direBonjour($nom) // Ici je déclare la fonction direBonjour avec un paramètre $nom
+{
+    echo "Bonjour $nom <br>";
+}
+
+direBonjour("John"); // Ici j'exécute la fonction direBonjour et je lui passe la valeur John en argument pour le paramètre $nom.
+
+$prenom = "Jane";
+direBonjour($prenom); // Ici j'exécute la fonction direBonjour et je lui passe la variable $prenom en argument pour le paramètre $nom.
+// Le paramètre peut être une variable ou une valeur.
+
+echo '<b>Fonction avec paramètre par défaut</b><br>';
+// Faire une fonction qui prend en paramètre un nom et l'age et qui affiche "Bonjour nom, tu as age ans." Si le nom n'est pas renseigné, on affiche "Bonjour anonyme, tu as age ans."
+
+// Ici je déclare la fonction presentation avec deux paramètres $nom et $age. Le paramètre $nom a une valeur par défaut "anonyme".
+function presentation($age, $nom = "anonyme") 
+{
+    echo "Bonjour $nom, tu as $age ans. <br>";
+}
+
+presentation(25, "John"); // Ici j'exécute la fonction presentation et je lui passe la valeur John en argument pour le paramètre $nom et la valeur 25 en argument pour le paramètre $age.
+
+presentation(18);
+
+echo '<b>Fonction avec valeur de retour</b><br>';
+function appliqueTaxe($montant)
+{
+    return $montant * 1.2; // Ici je retourne le montant multiplié par 1.2
+}
+
+echo appliqueTaxe(100) . "<br>"; // Ici j'exécute la fonction appliqueTaxe et je lui passe la valeur 100 en argument pour le paramètre $montant. La fonction retourne 120 et j'affiche le résultat.
+
+// Reécrire la fontion appliqueTaxe , en definissant le taux de taxe comme un paramètre par dé<faut.Ce paramètre aura pour valeur par défaut 20%
+function appliqueTaxes2($montant, $taxe = 20)
+{
+    return $montant += ($taxe / 100) * $montant;
+}
+
+echo appliqueTaxes2(1000);
+echo "<br>";
+echo appliqueTaxes2(1000, 10);
+echo "<br><br>";
+
+
+function appTaxe($montant, $taxe = 1.2)
+{
+    return $montant * $taxe;
+}
+
+echo appTaxe(1000);
+echo "<br>";
+echo appTaxe(1000, 1.1);
