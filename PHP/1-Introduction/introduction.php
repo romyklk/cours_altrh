@@ -223,3 +223,58 @@ if($varA > $varB) // Si la condition est à true,alors le if sera éxécuté
 
     echo "$varA est inférieur à $varB <br>";
 }
+
+// si $varA est supérieur à $varB et que dans le même temps $varB est supérieur à $varC.
+// On utilise l'opérateur && pour dire "et" en php.
+if($varA > $varB && $varB > $varC)
+{
+    echo "Les deux conditions sont vraies <br>";
+}
+
+// si $varA est supérieur à $varB ou que $varB est inférieur à $varC.
+// On utilise l'opérateur || pour dire "ou" en php.Avec ou ,  il suffit qu'une des deux conditions soit vraie pour que le if soit éxécuté.Si les deux conditions sont vraies, le if sera également éxécuté.
+
+if($varA > $varB || $varB < $varC)
+{
+    echo "Au moins une des deux conditions est vraie <br>";
+}
+
+// XOR : ou exclusif. La condition sera vraie si une des deux conditions est vraie mais pas les deux en même temps.
+
+if($varA > $varB XOR $varB < $varC)
+{
+    echo "Une seule des deux conditions est vraie <br>";
+}
+
+// if...elseif...else
+
+if($varA == 8) // Si $varA continet 8
+{
+    echo "Réponse 1 : \$varA est égal à 8 <br>";
+
+}elseif($varA != 10){ // Sinon si $varA est différent de 10
+
+    echo "Réponse 2 : \$varA est différent de 10 <br>";
+
+}else{ // Sinon
+
+    echo "Réponse 3 : Les deux conditions sont fausses <br>";
+}
+
+echo "<br><b> Ecriture ternaire d'un if...else</b><br>";
+
+echo ($varA == 10) ? "varA est égal à 10 <br>" : "varA est différent de 10 <br>"; 
+
+// Le ? remplace le if et le : remplace le else. On affiche le premier string si la condition est vraie, sinon on affiche le second string.
+
+//!\\ PHP 7 : On peut entrer une valeur dans une variable sous condition 
+
+$data = isset($maVar) ? $maVar : "valeur par défaut"; // Si $maVar existe, on lui affecte sa valeur, sinon on lui affecte la valeur par défaut.
+
+echo $data . "<br>";
+
+// On peut écrire la même chose avec le null coalescing operator (opérateur de fusion null) : ??
+
+$data2 = $maVar ?? "valeur par défaut"; // Si $maVar existe, on lui affecte sa valeur, sinon on lui affecte la valeur par défaut.
+
+echo $data2 . "<br>";
