@@ -278,3 +278,82 @@ echo $data . "<br>";
 $data2 = $maVar ?? "valeur par défaut"; // Si $maVar existe, on lui affecte sa valeur, sinon on lui affecte la valeur par défaut.
 
 echo $data2 . "<br>";
+
+echo "<b>Différence entre =, == et ===</b><br>";
+
+/* 
+= permet d'affecter une valeur à une variable.
+== permet de vérifier si deux variables sont égales(les valeurs sont égales).
+=== permet de vérifier si deux variables sont égales et du même type.
+*/
+
+$ageA = 25;
+$ageB = "25";
+if($ageA == $ageB) // Ici on compare uniquement les valeurs
+{
+    echo "Les deux variables sont égales <br>";
+}
+
+if($ageA === $ageB) // Ici on compare les valeurs et les types
+{
+    echo "Les deux variables sont égales et du même type <br>";
+}else{ // Sinon
+    echo "Les deux variables ne sont pas égales ou ne sont pas du même type <br>";
+}
+
+
+echo "<hr><h2>Condition switch</h2>";
+// Switch est une autre syntaxe pour écrire un if...elseif...else quand on veut comparer une variable à une multitude de valeurs.
+
+$couleur = "jaune";
+ switch($couleur){
+    case "bleu": // case représente une valeur possible de la variable $couleur
+        echo "Vous aimez le bleu <br>"; // l'instruction qui sera exécutée s
+    break; // break permet de sortir de la condition switch
+    case "rouge":
+        echo "Vous aimez le rouge <br>";
+    break;
+    case "vert":
+        echo "Vous aimez le vert <br>";
+    break;
+    default: // default représente le cas par défaut
+        echo "Vous n'aimez aucune de ces couleurs <br>";
+    break;
+}
+
+// Faire la même chose avec un if...elseif...else
+
+if($couleur == "bleu"){
+    echo "Vous aimez le bleu <br>";
+}elseif($couleur == "rouge") {
+    echo"Vous aimez le rouge <br>";
+}elseif($couleur == "vert") {
+    echo"Vous aimez le vert <br>";
+}else {
+    echo"Vous n'aimez aucune de ses couleurs <br>";
+}
+
+// ou 
+if ($couleur == "bleu" || $couleur == "vert" || $couleur == "rouge") {
+    echo "Vous aimez la $couleur <br>";
+} else {
+    echo "Vous n'aimez aucune de ces couleurs";
+}
+
+echo "<hr><h2>Expression match</h2>";
+/* 
+Match est une nouvelle syntaxe introduite en PHP 8 qui permet de faire la même chose que switch mais en plus court.
+L'avantage est que match est plus lisble et plus facile à écrire.
+La différence avec switch est que match n'évalue qu'une seule expression tandis que switch peut évaluer plusieurs expressions.
+
+*/
+
+$color = "blue";
+$message = match($color){
+    "blue" => "Vous aimez le bleu <br>",
+    "red" => "Vous aimez le rouge <br>",
+    "green" => "Vous aimez le vert <br>",
+    default => "Vous n'aimez aucune de ces couleurs <br>",
+};
+
+echo $message;
