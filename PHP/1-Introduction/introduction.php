@@ -865,3 +865,33 @@ echo $userInfos[2]["lastname"] . "<br>";
 for($i = 0; $i < count($userInfos); $i++){
     echo $userInfos[$i]["firstname"] . "<br>";
 }
+
+echo "<hr><h2>Les objets</h2>";
+/* 
+Une classe est un modèle de ce que doit contenir un objet.C'est-à-dire le plan de construction d'un objet.
+Un objet est une instance d'une classe.C'est-à-dire qu'il est construit à partir du plan de construction d'une classe.
+*/
+
+class User 
+{
+    public $id = 1; // Public represente la visibilité de la propriété. Ici la propriété $id est publique donc accessible partout.
+    protected $age = 25; // Protected represente la visibilité de la propriété. Ici la propriété $age est protégée donc accessible uniquement dans la classe et les classes héritières.
+    private $password; // Private represente la visibilité de la propriété. Ici la propriété $password est privée donc accessible uniquement dans la classe.
+    public $firstname="Audrey";
+
+    public function adresse()
+    {
+        return "Paris";
+    }
+}
+
+// Pour instancer un objet, on utilise le mot-clé new suivi du nom de la classe.
+
+$user1 = new User; // Ici j'instancie un objet $user1 à partir de la classe User.
+
+var_dump($user1);
+
+// Pour afficher une propriété ou une méthode d'un objet, on utilise le nom de l'objet suivi d'une flèche -> et du nom de la propriété ou de la méthode.
+
+echo $user1->firstname . "<br>"; // Ici j'affiche la propriété $firstname de l'objet $user1.
+echo $user1->adresse() . "<br>"; // Ici j'affiche la méthode adresse() de l'objet $user1.
