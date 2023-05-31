@@ -912,4 +912,6 @@ Si la moyenne est supérieure ou égale à 12 alors affichez "La promotion est v
 
 Si la moyenne est supérieure ou égale à 10 et inférieure à 12 alors affichez "La promotion est validée avec une moyenne de XX/20". La moyenne doit avor une couleur orange.
 
+Si la moyenne est inférieure à 10 alors affichez "La promotion est recalée avec une moyenne de XX/20". La moyenne doit avor une couleur rouge.
+
 */
