@@ -126,7 +126,7 @@ echo "<hr><h2>Différence entre guillemets et quotes</h2>";
 $info = "Ajourd'hui il fait beau";
 $info2 = 'Ajourd\'hui il fait beau'; // Pour écrire une apostrophe dans une chaine de caractères délimitée par des quotes, il faut utiliser un antislash \ avant l'apostrophe.
 
-$nom = "Lucas"; 
+$nom = "Lucas";
 // Afficher la phrase : Bonjour Lucas, comment vas-tu ?
 
 echo "Bonjour $nom, comment vas-tu ? <br>"; // Ici j'utilise les guillemets pour afficher la phrase. Les variables sont interprétées.
@@ -170,7 +170,7 @@ echo __NAMESPACE__ . "<br>"; // Affiche le nom de l'espace de nom dans lequel on
 echo "<hr><h2>Opérateurs arithmétiques</h2>";
 // Les opérateurs courants sont : addition +, soustraction -, multiplication *, division / et  modulo %.
 
-$a =24;
+$a = 24;
 $b = 6;
 
 echo $a + $b . "<br>"; // Addition : 30
@@ -181,10 +181,10 @@ echo $a % $b . "<br>"; // Modulo : 0
 
 echo "<b>Opération/Affection</b>";
 
-$a =24;
+$a = 24;
 $b = 6;
 
-$a +=$b; // revient à écrire $a = $a + $b
+$a += $b; // revient à écrire $a = $a + $b
 echo $a . "<br>"; // 30
 
 $a -= $b; // revient à écrire $a = $a - $b
@@ -201,11 +201,11 @@ echo "<hr><h2>Structures conditionnelles (if/else) - Opérateurs de comparaison<
 
 // Les valeurs suivantes sont considérées comme vides : 0, 0.0, "0", "", NULL, false
 
-if(empty($var1)) { // retourne true si la variable est vide ou n'existe pas
+if (empty($var1)) { // retourne true si la variable est vide ou n'existe pas
     echo "La variable var1 est vide <br>";
 }
 
-if(isset($var2)) { // retourne true si la variable existe
+if (isset($var2)) { // retourne true si la variable existe
     echo "La variable var2 existe <br>";
 } // dans notre cas, la variable var2 n'existe pas donc le code à l'intérieur du if ne sera pas exécuté.
 
@@ -215,55 +215,49 @@ $varA = 10;
 $varB = 5;
 $varC = 2;
 
-if($varA > $varB) // Si la condition est à true,alors le if sera éxécuté
+if ($varA > $varB) // Si la condition est à true,alors le if sera éxécuté
 {
     echo "$varA est supérieur à $varB <br>";
-
-}else{ // Sinon le else sera éxécuté 
+} else { // Sinon le else sera éxécuté 
 
     echo "$varA est inférieur à $varB <br>";
 }
 
 // si $varA est supérieur à $varB et que dans le même temps $varB est supérieur à $varC.
 // On utilise l'opérateur && pour dire "et" en php.
-if($varA > $varB && $varB > $varC)
-{
+if ($varA > $varB && $varB > $varC) {
     echo "Les deux conditions sont vraies <br>";
 }
 
 // si $varA est supérieur à $varB ou que $varB est inférieur à $varC.
 // On utilise l'opérateur || pour dire "ou" en php.Avec ou ,  il suffit qu'une des deux conditions soit vraie pour que le if soit éxécuté.Si les deux conditions sont vraies, le if sera également éxécuté.
 
-if($varA > $varB || $varB < $varC)
-{
+if ($varA > $varB || $varB < $varC) {
     echo "Au moins une des deux conditions est vraie <br>";
 }
 
 // XOR : ou exclusif. La condition sera vraie si une des deux conditions est vraie mais pas les deux en même temps.
 
-if($varA > $varB XOR $varB < $varC)
-{
+if ($varA > $varB xor $varB < $varC) {
     echo "Une seule des deux conditions est vraie <br>";
 }
 
 // if...elseif...else
 
-if($varA == 8) // Si $varA continet 8
+if ($varA == 8) // Si $varA continet 8
 {
     echo "Réponse 1 : \$varA est égal à 8 <br>";
-
-}elseif($varA != 10){ // Sinon si $varA est différent de 10
+} elseif ($varA != 10) { // Sinon si $varA est différent de 10
 
     echo "Réponse 2 : \$varA est différent de 10 <br>";
-
-}else{ // Sinon
+} else { // Sinon
 
     echo "Réponse 3 : Les deux conditions sont fausses <br>";
 }
 
 echo "<br><b> Ecriture ternaire d'un if...else</b><br>";
 
-echo ($varA == 10) ? "varA est égal à 10 <br>" : "varA est différent de 10 <br>"; 
+echo ($varA == 10) ? "varA est égal à 10 <br>" : "varA est différent de 10 <br>";
 
 // Le ? remplace le if et le : remplace le else. On affiche le premier string si la condition est vraie, sinon on affiche le second string.
 
@@ -289,15 +283,15 @@ echo "<b>Différence entre =, == et ===</b><br>";
 
 $ageA = 25;
 $ageB = "25";
-if($ageA == $ageB) // Ici on compare uniquement les valeurs
+if ($ageA == $ageB) // Ici on compare uniquement les valeurs
 {
     echo "Les deux variables sont égales <br>";
 }
 
-if($ageA === $ageB) // Ici on compare les valeurs et les types
+if ($ageA === $ageB) // Ici on compare les valeurs et les types
 {
     echo "Les deux variables sont égales et du même type <br>";
-}else{ // Sinon
+} else { // Sinon
     echo "Les deux variables ne sont pas égales ou ne sont pas du même type <br>";
 }
 
@@ -306,31 +300,31 @@ echo "<hr><h2>Condition switch</h2>";
 // Switch est une autre syntaxe pour écrire un if...elseif...else quand on veut comparer une variable à une multitude de valeurs.
 
 $couleur = "jaune";
- switch($couleur){
+switch ($couleur) {
     case "bleu": // case représente une valeur possible de la variable $couleur
         echo "Vous aimez le bleu <br>"; // l'instruction qui sera exécutée s
-    break; // break permet de sortir de la condition switch
+        break; // break permet de sortir de la condition switch
     case "rouge":
         echo "Vous aimez le rouge <br>";
-    break;
+        break;
     case "vert":
         echo "Vous aimez le vert <br>";
-    break;
+        break;
     default: // default représente le cas par défaut
         echo "Vous n'aimez aucune de ces couleurs <br>";
-    break;
+        break;
 }
 
 // Faire la même chose avec un if...elseif...else
 
-if($couleur == "bleu"){
+if ($couleur == "bleu") {
     echo "Vous aimez le bleu <br>";
-}elseif($couleur == "rouge") {
-    echo"Vous aimez le rouge <br>";
-}elseif($couleur == "vert") {
-    echo"Vous aimez le vert <br>";
-}else {
-    echo"Vous n'aimez aucune de ses couleurs <br>";
+} elseif ($couleur == "rouge") {
+    echo "Vous aimez le rouge <br>";
+} elseif ($couleur == "vert") {
+    echo "Vous aimez le vert <br>";
+} else {
+    echo "Vous n'aimez aucune de ses couleurs <br>";
 }
 
 // ou 
@@ -349,7 +343,7 @@ La différence avec switch est que match n'évalue qu'une seule expression tandi
 */
 
 $color = "blue";
-$message = match($color){
+$message = match ($color) {
     "blue" => "Vous aimez le bleu <br>",
     "red" => "Vous aimez le rouge <br>",
     "green" => "Vous aimez le vert <br>",
@@ -379,7 +373,7 @@ echo strlen($contenu) . "<br>"; // affiche 78 car il y a 78 caractères dans la 
 
 //substr() : permet de couper une partie d'une chaine de caractères. Cette fonction retourne la partie de la chaine de caractères qui a été coupée.
 
-$texte ="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+$texte = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
 echo substr($texte, 0, 80) . "... <a href='#'>Lire la suite</a>"; // affiche les 80 premiers caractères de la chaine de caractères.
 // le premier argument correspond à la chaine de caractères à couper.
@@ -430,7 +424,7 @@ echo '<b>Fonction avec paramètre par défaut</b><br>';
 // Faire une fonction qui prend en paramètre un nom et l'age et qui affiche "Bonjour nom, tu as age ans." Si le nom n'est pas renseigné, on affiche "Bonjour anonyme, tu as age ans."
 
 // Ici je déclare la fonction presentation avec deux paramètres $nom et $age. Le paramètre $nom a une valeur par défaut "anonyme".
-function presentation($age, $nom = "anonyme") 
+function presentation($age, $nom = "anonyme")
 {
     echo "Bonjour $nom, tu as $age ans. <br>";
 }
@@ -486,7 +480,7 @@ function saison($saison, $temperature)
 
     if ($temperature > 18) {
         $chaud = "et il fait chaud";
-    }else{
+    } else {
         $chaud = "";
     }
 
@@ -558,64 +552,62 @@ NB: Utilisez gettype() pour vérifier le type d'une variable.
 */
 
 echo "Exemple correction  <br><br>";
-function verifMoyenne($note,$matiere,$prenom,$college='Collège de France'){
+function verifMoyenne($note, $matiere, $prenom, $college = 'Collège de France')
+{
 
     // Je déclare une variable $error qui va contenir tous messages d'erreur
 
     $error = "";
     // Vérification de la note(nombre)
 
-    if(gettype($note) != "integer" && gettype($note) != "double"){
+    if (gettype($note) != "integer" && gettype($note) != "double") {
         $error .= "La note doit être un nombre ! <br>";
     }
 
     // comprise entre 0 et 20
-    if($note <0 || $note > 20){
+    if ($note < 0 || $note > 20) {
         $error .= "La note doit être comprise entre 0 et 20 ! <br>";
     }
 
     // Vérification du prénom (string)
-    if(gettype($prenom) != "string"){
+    if (gettype($prenom) != "string") {
         $error .= "Le prénom doit être une chaîne de caractères ! <br>";
     }
 
     // Vérification de la matière (string)
-    if(gettype($matiere) != "string"){
+    if (gettype($matiere) != "string") {
         $error .= "La matière doit être une chaîne de caractères ! <br>";
     }
 
     // Si $error est vide , alors je peux afficher le message de félicitation
 
-    if(empty($error)){
+    if (empty($error)) {
 
-        if($note >= 10){
+        if ($note >= 10) {
 
             // Cette variable va contenir l'appréciation
-            $mention = ($note >= 17 && $note <= 20) ? "Très bien": "";
+            $mention = ($note >= 17 && $note <= 20) ? "Très bien" : "";
 
             return "Bravo $prenom ! Vous êtes reçu(e) au $college $mention !";
-
-        }elseif($note >=8 && $note < 10){
+        } elseif ($note >= 8 && $note < 10) {
 
             return "Bonjour $prenom vous devez passer l'examen de rattrapage en $matiere !<br>";
-
-        }else{
+        } else {
             return "Désolé $prenom ! Vous êtes recalé(e) !<br>";
         }
-
-    }else {
+    } else {
         return $error;
     }
-
 }
 
-echo verifMoyenne(15,"SVT","Alice","Victor Hugo");
-echo verifMoyenne("abc","SVT","Alice","Victor Hugo");
-echo verifMoyenne(5,"Français","Eva");
+echo verifMoyenne(15, "SVT", "Alice", "Victor Hugo");
+echo verifMoyenne("abc", "SVT", "Alice", "Victor Hugo");
+echo verifMoyenne(5, "Français", "Eva");
 
 echo '<b>La portée des variables</b><br>';
 
-function jour(){
+function jour()
+{
     $jour = "Mercredi"; // Variable locale car elle est déclarée à l'intérieur de la fonction
     return $jour;
     echo "Hello"; // Cette ligne ne s'affichera pas car elle vient après return
@@ -633,12 +625,12 @@ echo "Bonjour nous sommes $day <br>";
 
 $ville = "Franconville";
 
-function afficheVille(){
+function afficheVille()
+{
 
     global $ville; // global permet d'importer une variable qui est déclarée dans le scope global à l'intérieur de ma fonction
 
     echo $ville;
-
 }
 
 afficheVille();
@@ -647,18 +639,19 @@ echo '<b>Typage des arguments et du retour</b><br>';
 
 //!\\ PHP 7: On peut préciser en amont le type de l'argument
 
-function presentation2(string $nom,int $age){
+function presentation2(string $nom, int $age)
+{
     return "$nom a $age ans <br>";
 }
 
-echo presentation2("Jean",21);
+echo presentation2("Jean", 21);
 //echo presentation2("Lucas","Sophie");
 
 //!\\ PHP 7: On peut préciser le type de retour
 
 function isMajeur(int $age): bool
 {
-    return $age >=18;
+    return $age >= 18;
 }
 
 var_dump(isMajeur(14));
@@ -668,12 +661,12 @@ var_dump(isMajeur(21));
 
 function concatene(string|int $a, string|int $b): string|int
 {
-    return $a . $b ;
+    return $a . $b;
 }
 
-echo concatene(5,6);
-echo"<br>";
-echo concatene("Julien",32);
+echo concatene(5, 6);
+echo "<br>";
+echo concatene("Julien", 32);
 
 echo "<h2>Les structures itératives : Boucle</h2>";
 
@@ -683,7 +676,7 @@ echo "<b>Boucle while</b><br>";
 
 $i = 0; //initialisation de la variable de la valeur de départ
 
-while($i < 5){ // tant que $i est inférieur à 5, on exécute le code à l'intérieur de la boucle
+while ($i < 5) { // tant que $i est inférieur à 5, on exécute le code à l'intérieur de la boucle
     echo $i . "<br>";
     $i++; //incrémentation de la variable
 }
@@ -691,11 +684,11 @@ while($i < 5){ // tant que $i est inférieur à 5, on exécute le code à l'int�
 // Afficher 0-1-2-3-4 sur la même ligne
 
 $y = 0;
-while($y < 5){
+while ($y < 5) {
 
-    if($y == 4){
+    if ($y == 4) {
         echo $y;
-    }else{
+    } else {
         echo $y . "-";
     }
 
@@ -708,7 +701,7 @@ echo "<br>";
 $z = 1; // initialisation de la variable de la valeur de départ
 $somme = 0; // initialisation de la variable qui va contenir la somme
 
-while($z <= 100){ 
+while ($z <= 100) {
 
     $somme += $z; // on ajoute la valeur de $z à la variable $somme
 
@@ -722,7 +715,7 @@ echo "<b>Boucle for</b><br>";
 // La boucle for permet d'exécuter un bloc de code un nombre de fois défini à l'avance.
 // Pour écire une boucle for , il faut : la valeur de départ, la condition d'entrée dans la boucle, l'incrémentation ou la décrémentation(le sens de la boucle)
 
-for($i = 0; $i <= 10; $i++){
+for ($i = 0; $i <= 10; $i++) {
     echo $i . "<br>";
 }
 
@@ -737,9 +730,138 @@ echo "</select>";
 
 echo "<br>";
 echo "<select>";
-for($jour = 1; $jour <= 31; $jour++){
+for ($jour = 1; $jour <= 31; $jour++) {
     echo "<option>$jour</option>";
 }
 echo "</select>";
-
+echo "<br>";
 //EXERCICE : En utilisant la boucle for(), affichez une liste déroulante avec les années de n-1 à n-50 en arrière. Faites en sorte que votre code fonctionne pour n'importe quelle année.
+
+$year = date("Y");
+echo "<select>";
+echo "<option>Choisir une année</option>";
+for ($i = $year - 1; $i >= $year - 50; $i--) {
+    echo "<option>$i</option>";
+}
+echo "</select>";
+
+echo "<br>";
+
+echo "<hr><h2>Tableaux de données (array)</h2>";
+
+/* 
+Un tableau est déclaré comme une variable améliorée dans laquelle on stocke une multitude de valeurs. Ces valeurs peuvent être de n'importe quel type.
+
+Pour déclarer un tableau, on utilise la syntaxe suivante : array() ou []
+*/
+
+$etudiant = array("John", "Jane", "Marc", "Sophie"); // Ici je déclare un tableau avec la fonction array() et je lui affecte 4 valeurs.
+
+$etudiant2 = ["Luc", "Martin", "Pierre", "Julie"]; // Ici je déclare un tableau avec les crochets et je lui affecte 4 valeurs.
+
+// pour afficher les valeurs d'un tableau, on utilise la fonction var_dump() ou print_r()
+
+// var_dump affiche le contenu du tableau avec le type des valeurs et d'autres informations.
+var_dump($etudiant);
+
+// print_r affiche le contenu du tableau sans le type des valeurs.Les valeurs sont affichées dans un ordre logique sur une seule ligne.Pour un affichage plus lisible, on peut utiliser la balise <pre></pre> pour afficher le contenu du tableau sur plusieurs lignes.<pre> permet de conserver la mise en forme du code(preformatted text).
+echo "<pre>";
+print_r($etudiant2);
+echo "</pre>";
+
+echo "<br>";
+echo "<b>Affichage des données d'un tableau</b>";
+
+echo $etudiant2[2]; // Je récupère la valeur qui se trouve à l'indice 2 du tableau $etudiant2
+
+// La boucle foreach() : permet de parcourir un tableau de manière automatique et d'afficher toutes les valeurs du tableau sans avoir à connaitre le nombre d'éléments dans le tableau.Elle est souvent utilisée pour afficher les données d'un tableau ou d'un objet.
+echo "<br>";
+/* 
+Nous avons deux manières d'écrire une boucle foreach() :
+
+    1 - foreach($tableau as $element){} : cette syntaxe permet de parcourir toutes les valeurs du tableau et de les afficher.Elle prend le tableau à parcourir en premier argument et une variable qui va contenir la valeur de l'élément à chaque tour de boucle en deuxième argument.
+
+    2 - foreach($tableau as $indexe=>$value){} : cette syntaxe permet de parcourir toutes les valeurs du tableau et de les afficher.Elle prend le tableau à parcourir en premier argument et deux variables en deuxième argument : la première variable va contenir l'indexe de l'élément à chaque tour de boucle et la seconde variable va contenir la valeur de l'élément à chaque tour de boucle.
+
+*/
+foreach ($etudiant as $unEtudiant) {
+    echo $unEtudiant . "<br>";
+}
+
+foreach ($etudiant2 as $indexe => $value) {
+    echo "Je suis à l'indexe " . $indexe . " : " . $value . "<br>";
+}
+
+// Je peux insérer des valeurs à l'intérieur d'un tbaleau en utilisant la syntaxe suivante : $tableau[] = "valeur";
+$countries = [];
+
+$countries[] = "France";
+$countries[] = "Belgique";
+$countries[] = "Allemagne";
+$countries[] = "Espagne";
+$countries[] = "Italie";
+
+var_dump($countries);
+
+// Pour connaitre la longueur d'un tableau, on utilise la fonction count() ou sizeof()
+echo "<br>";
+
+echo "La longueur du tableau est de " . count($countries) . " éléments <br>";
+echo "La longueur du tableau est de " . sizeof($countries) . " éléments <br>";
+
+// implode() : permet de rassembler les éléments d'un tableau en une chaine de caractères. Cette fonction retourne la chaine de caractères.Elle prend en premier argument le séparateur et en second argument le tableau à rassembler.
+
+echo implode(" / ", $countries) . "<br>";
+
+echo "<b>Tableau associatif</b><br>";
+
+/*
+Un tableau associatif est un tableau dans lequel on associe des valeurs à des clés.
+*/
+
+$userData = [
+    "firstname" => "John",
+    "lastname" => "Doe",
+    "age" => 25,
+    "city" => "Paris"
+];
+
+var_dump($userData);
+
+echo "Cet user à pour prénom " . $userData["firstname"] . "<br>";
+
+echo "<b>Tableau Multidimensionnel</b> <br>";
+/* 
+Un tableau multidimensionnel est un tableau qui contient un ou plusieurs tableaux à l'intérieur de lui-même.
+*/
+
+$userInfos = [
+    0 => [
+        "firstname" => "John",
+        "lastname" => "Doe",
+        "age" => 25,
+        "city" => "Paris"
+    ],
+    1 => [
+        "firstname" => "Jane",
+        "lastname" => "Doe",
+        "age" => 30,
+        "city" => "Lyon"
+    ],
+    2 => [
+        "firstname" => "Marc",
+        "lastname" => "Dupont",
+        "age" => 20,
+        "city" => "Marseille"
+    ]
+];
+
+// Afficher Dupont
+
+echo $userInfos[2]["lastname"] . "<br>";
+
+// Afficher tous les prénoms
+
+for($i = 0; $i < count($userInfos); $i++){
+    echo $userInfos[$i]["firstname"] . "<br>";
+}
