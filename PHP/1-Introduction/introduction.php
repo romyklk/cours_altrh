@@ -674,3 +674,72 @@ function concatene(string|int $a, string|int $b): string|int
 echo concatene(5,6);
 echo"<br>";
 echo concatene("Julien",32);
+
+echo "<h2>Les structures itératives : Boucle</h2>";
+
+echo "<b>Boucle while</b><br>";
+
+// La boucle while permet d'exécuter un bloc de code tant qu'une condition est vérifiée.
+
+$i = 0; //initialisation de la variable de la valeur de départ
+
+while($i < 5){ // tant que $i est inférieur à 5, on exécute le code à l'intérieur de la boucle
+    echo $i . "<br>";
+    $i++; //incrémentation de la variable
+}
+
+// Afficher 0-1-2-3-4 sur la même ligne
+
+$y = 0;
+while($y < 5){
+
+    if($y == 4){
+        echo $y;
+    }else{
+        echo $y . "-";
+    }
+
+    $y++;
+}
+
+echo "<br>";
+// Ecrivez un programme qui calcule la somme des entiers de 1 à 100 à l'aide d'une boucle while et affiche le résultat.("La somme des entiers de 1 à 100 est égale à $resultat")
+
+$z = 1; // initialisation de la variable de la valeur de départ
+$somme = 0; // initialisation de la variable qui va contenir la somme
+
+while($z <= 100){ 
+
+    $somme += $z; // on ajoute la valeur de $z à la variable $somme
+
+    $z++;
+}
+
+echo "La somme des entiers de 1 à 100 est égale à $somme <br>";
+
+echo "<b>Boucle for</b><br>";
+
+// La boucle for permet d'exécuter un bloc de code un nombre de fois défini à l'avance.
+// Pour écire une boucle for , il faut : la valeur de départ, la condition d'entrée dans la boucle, l'incrémentation ou la décrémentation(le sens de la boucle)
+
+for($i = 0; $i <= 10; $i++){
+    echo $i . "<br>";
+}
+
+echo "<br>";
+
+echo "<select>";
+echo "<option>1</option>";
+echo "<option>2</option>";
+echo "<option>3</option>";
+echo "<option>....N </option>";
+echo "</select>";
+
+echo "<br>";
+echo "<select>";
+for($jour = 1; $jour <= 31; $jour++){
+    echo "<option>$jour</option>";
+}
+echo "</select>";
+
+//EXERCICE : En utilisant la boucle for(), affichez une liste déroulante avec les années de n-1 à n-50 en arrière. Faites en sorte que votre code fonctionne pour n'importe quelle année.
