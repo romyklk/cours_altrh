@@ -467,3 +467,85 @@ function appTaxe($montant, $taxe = 1.2)
 echo appTaxe(1000);
 echo "<br>";
 echo appTaxe(1000, 1.1);
+
+/* 
+
+EXERCICE 1 : Faire une fonction qui prend la saison et la température et affiche  "Nous sommes en $saison et il fait $temperature degrés" . Si la température est égale à 1 ou -1 degré, on affiche degré au singulier . Si la saison est printemps , on affiche "au" devant le nom de la saison.
+Exemple : Nous sommes en hiver et il fait -1 degré.
+Si la température est supérieur à 18, on affiche "et il fait chaud".
+*/
+echo "Exemple correction 1 <br><br>";
+
+function saison($saison, $temperature)
+{
+    if ($saison == "printemps") {
+        $message = "Nous sommes au $saison et il fait $temperature ";
+    } else {
+        $message = "Nous sommes en $saison et il fait $temperature ";
+    }
+
+    if ($temperature > 18) {
+        $chaud = "et il fait chaud";
+    }else{
+        $chaud = "";
+    }
+
+    if ($temperature <= 1 && $temperature >= -1) {
+        $temp = "degré";
+    } else {
+        $temp = "degrés";
+    }
+
+    return "$message $temp $chaud";
+}
+
+echo saison("été", 22);
+echo "<br>";
+echo saison("été", 16);
+echo "<br>";
+echo saison("printemps", 22);
+echo "<br>";
+echo saison("hiver", 1);
+
+echo "Exemple correction 2 <br><br>";
+
+function afficherSaisonTemperature($saison, $temperature)
+{
+    $degre = ($temperature == 1 || $temperature == -1) ? "degré" : "degrés";
+
+    $chaleur = ($temperature > 18) ? " et il fait chaud" : "";
+
+    if ($saison == "printemps") {
+        echo "Nous sommes au $saison et il fait $temperature $degre$chaleur.";
+    } else {
+        echo "Nous sommes en $saison et il fait $temperature $degre$chaleur.";
+    }
+}
+
+afficherSaisonTemperature("hiver", -1);
+echo "<br>";
+afficherSaisonTemperature("été", 22);
+echo "<br>";
+afficherSaisonTemperature("printemps", -2);
+
+
+
+
+
+
+
+/* 
+EXERCICE 2 : "Implémentez une fonction nommée 'verifierMoyenne' qui prend en paramètres la note, la matière, le prénom et le collège d'un élève, et affiche le message suivant :
+- Si la moyenne est supérieure ou égale à 10, affichez 'Bravo [prénom] ! Vous êtes reçu(e) au [collège] !'
+- Si la moyenne est supérieure ou égale à 8 et inférieure à 10, affichez 'Vous devez passer l'examen de rattrapage en [matière]!'
+- Si la moyenne est inférieure à 8, affichez 'Désolé [prénom] ! Vous êtes recalé(e) !'
+Si aucun collège n'est spécifié, le collège par défaut est 'Collège de France'.
+Si la note de l'élève n'est pas un nombre, affichez 'La note doit être un nombre !'
+Si la note de l'élève n'est pas comprise entre 0 et 20, affichez 'La note doit être comprise entre 0 et 20 !'
+Si le prénom de l'élève n'est pas une chaîne de caractères, affichez 'Le prénom doit être une chaîne de caractères !'
+Si la matière n'est pas une chaîne de caractères, affichez 'La matière doit être une chaîne de caractères !'
+Si la note se situe entre 17 et 20, affichez 'Très bien'."(A la suite du message de felicitation).
+
+NB: Utilisez gettype() pour vérifier le type d'une variable.
+*/
+
