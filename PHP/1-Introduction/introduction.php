@@ -535,17 +535,80 @@ afficherSaisonTemperature("printemps", -2);
 
 
 /* 
-EXERCICE 2 : "Implémentez une fonction nommée 'verifierMoyenne' qui prend en paramètres la note, la matière, le prénom et le collège d'un élève, et affiche le message suivant :
+EXERCICE 2 : "Implémentez une fonction nommée 'verifierMoyenne' qui prend en argument la note, la matière, le prénom et le collège d'un élève, et affiche le message suivant :
+
 - Si la moyenne est supérieure ou égale à 10, affichez 'Bravo [prénom] ! Vous êtes reçu(e) au [collège] !'
+
 - Si la moyenne est supérieure ou égale à 8 et inférieure à 10, affichez 'Vous devez passer l'examen de rattrapage en [matière]!'
+
 - Si la moyenne est inférieure à 8, affichez 'Désolé [prénom] ! Vous êtes recalé(e) !'
+
 Si aucun collège n'est spécifié, le collège par défaut est 'Collège de France'.
+
 Si la note de l'élève n'est pas un nombre, affichez 'La note doit être un nombre !'
+
 Si la note de l'élève n'est pas comprise entre 0 et 20, affichez 'La note doit être comprise entre 0 et 20 !'
+
 Si le prénom de l'élève n'est pas une chaîne de caractères, affichez 'Le prénom doit être une chaîne de caractères !'
+
 Si la matière n'est pas une chaîne de caractères, affichez 'La matière doit être une chaîne de caractères !'
 Si la note se situe entre 17 et 20, affichez 'Très bien'."(A la suite du message de felicitation).
 
 NB: Utilisez gettype() pour vérifier le type d'une variable.
 */
 
+echo "Exemple correction  <br><br>";
+function verifMoyenne($note,$matiere,$prenom,$college='Collège de France'){
+
+    // Je déclare une variable $error qui va contenir tous messages d'erreur
+
+    $error = "";
+    // Vérification de la note(nombre)
+
+    if(gettype($note) != "integer" && gettype($note) != "double"){
+        $error .= "La note doit être un nombre ! <br>";
+    }
+
+    // comprise entre 0 et 20
+    if($note <0 || $note > 20){
+        $error .= "La note doit être comprise entre 0 et 20 ! <br>";
+    }
+
+    // Vérification du prénom (string)
+    if(gettype($prenom) != "string"){
+        $error .= "Le prénom doit être une chaîne de caractères ! <br>";
+    }
+
+    // Vérification de la matière (string)
+    if(gettype($matiere) != "string"){
+        $error .= "La matière doit être une chaîne de caractères ! <br>";
+    }
+
+    // Si $error est vide , alors je peux afficher le message de félicitation
+
+    if(empty($error)){
+
+        if($note >= 10){
+
+            // Cette variable va contenir l'appréciation
+            $mention = ($note >= 17 && $note <= 20) ? "Très bien": "";
+
+            return "Bravo $prenom ! Vous êtes reçu(e) au $college $mention !";
+
+        }elseif($note >=8 && $note < 10){
+
+            return "Bonjour $prenom vous devez passer l'examen de rattrapage en $matiere !<br>";
+
+        }else{
+            return "Désolé $prenom ! Vous êtes recalé(e) !<br>";
+        }
+
+    }else {
+        return $error;
+    }
+
+}
+
+echo verifMoyenne(15,"SVT","Alice","Victor Hugo");
+echo verifMoyenne("abc","SVT","Alice","Victor Hugo");
+echo verifMoyenne(5,"Français","Eva");
