@@ -612,3 +612,65 @@ function verifMoyenne($note,$matiere,$prenom,$college='Collège de France'){
 echo verifMoyenne(15,"SVT","Alice","Victor Hugo");
 echo verifMoyenne("abc","SVT","Alice","Victor Hugo");
 echo verifMoyenne(5,"Français","Eva");
+
+echo '<b>La portée des variables</b><br>';
+
+function jour(){
+    $jour = "Mercredi"; // Variable locale car elle est déclarée à l'intérieur de la fonction
+    return $jour;
+    echo "Hello"; // Cette ligne ne s'affichera pas car elle vient après return
+}
+
+// echo $jour; Erreur car la variable est localement déclarée
+
+echo jour();
+echo "<br>";
+
+$day = jour(); // Je récupère la valeur de retour dans une variable
+
+echo "Bonjour nous sommes $day <br>";
+
+
+$ville = "Franconville";
+
+function afficheVille(){
+
+    global $ville; // global permet d'importer une variable qui est déclarée dans le scope global à l'intérieur de ma fonction
+
+    echo $ville;
+
+}
+
+afficheVille();
+
+echo '<b>Typage des arguments et du retour</b><br>';
+
+//!\\ PHP 7: On peut préciser en amont le type de l'argument
+
+function presentation2(string $nom,int $age){
+    return "$nom a $age ans <br>";
+}
+
+echo presentation2("Jean",21);
+//echo presentation2("Lucas","Sophie");
+
+//!\\ PHP 7: On peut préciser le type de retour
+
+function isMajeur(int $age): bool
+{
+    return $age >=18;
+}
+
+var_dump(isMajeur(14));
+var_dump(isMajeur(21));
+
+//!\\ PHP 8: l'argument peut être une chaine ou un entier
+
+function concatene(string|int $a, string|int $b): string|int
+{
+    return $a . $b ;
+}
+
+echo concatene(5,6);
+echo"<br>";
+echo concatene("Julien",32);
