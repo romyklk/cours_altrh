@@ -5,7 +5,20 @@ Pour récupérer les données d'un formulaire , il faut preciser :
     - la method d'envoi des données (attribut method) : get ou post
     - l'action : l'url de destination des données (attribut action) qui n'est pas obligatoire. Si l'attribut action est vide, les données sont envoyées vers le scripte de la page courante.
     - l'attribut name qui est obligatoire afin de récupérer les données saisies dans l'input.
+
+    $_SERVER est une superglobale qui contient des informations sur le serveur et sur l'environnement d'exécution etc..
+    $_SERVER['REQUEST_METHOD'] : contient le type de requête utilisé pour accéder à la page. Si la requête est de type post, cela signifie que les données du formulaire ont été envoyées.
+    la différence entre $_POST et $_SERVER['REQUEST_METHOD'] == 'POST' est que $_POST permet de récupérer les données du formulaire et $_SERVER['REQUEST_METHOD'] == 'POST' permet de vérifier si les données ont été envoyées ou pas via http post.
 */
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    echo "Votre nom est : " . $_POST['nom'] . "<br>";
+    echo "Votre prénom est : " . $_POST['prenom'] . "<br>";
+    echo "Votre description est : " . $_POST['description'] . "<br>";
+}
+
 ?>
 
 <!DOCTYPE html>
