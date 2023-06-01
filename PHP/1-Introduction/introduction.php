@@ -915,3 +915,30 @@ Si la moyenne est supérieure ou égale à 10 et inférieure à 12 alors affiche
 Si la moyenne est inférieure à 10 alors affichez "La promotion est recalée avec une moyenne de XX/20". La moyenne doit avor une couleur rouge.
 
 */
+echo "<b>Correction exercice 6</b>";
+
+$notes = []; // initialisation du tableau qui va contenir les notes
+$sommeNotes = 0; // initialisation de la variable qui va contenir la somme des notes
+
+for($i=0;$i < 35 ; $i++){
+    $note = rand(0,20); // Je remplis le tableau avec des notes aléatoires
+    $notes[] = $note; // Je remplis le tableau avec des notes aléatoires
+    $sommeNotes += $note; // J'ajoute la note à la somme des notes
+}
+echo "<br>";
+// Affichage des notes du tableau.
+echo "Les notes de la promo :<br>";
+foreach($notes as $note){
+    echo $note . " ";
+}
+
+$moyenne = $sommeNotes / count($notes); // Je calcule la moyenne
+$moyenne = round($moyenne,2); // J'arrondis la moyenne à 2 chiffres après la virgule
+
+if($moyenne >= 12){
+    echo "<p>La promotion est validée avec une moyenne de <span style='color:green'>$moyenne/20</span> </p>";
+}elseif($moyenne >= 10 && $moyenne < 12){
+    echo "<p>La promotion est validée avec une moyenne de <span style='color:orange'>$moyenne/20</span> </p>";
+}else{
+    echo "<p>La promotion est recalée avec une moyenne de <span style='color:red'>$moyenne/20</span> </p>";
+}
