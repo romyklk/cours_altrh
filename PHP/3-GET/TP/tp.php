@@ -15,11 +15,30 @@ Si le fruit n'est pas l'un des quatre fruits proposés, affichez un message d'er
 
 */
 
-
-
-
-
-
-
-
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>tp</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 m-auto">
+            <a href="affichage.php?fruit=pomme" class="btn btn-primary">pomme</a>
+            <a href="affichage.php?fruit=poire" class="btn btn-success">poire</a>
+            <a href="affichage.php?fruit=fraise" class="btn btn-warning">fraise</a>
+            <a href="affichage.php?fruit=cerise" class="btn btn-danger">cerise</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
