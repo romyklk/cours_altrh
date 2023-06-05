@@ -60,4 +60,4 @@ Si l'utilisateur essaie d'accéder à la page paiement.php sans cliquer sur le b
 
 **8** <span style="color:blue;font-weight:bold">Affichage des livres stockés dans le fichier livres.txt sur le front  </span>
 
-Parcourez le fichier livres.txt et affichez les données de chaque livre dans une card bootstrap sur la page livres.php s'il y a des données dans le fichier.
+Parcourez le fichier livres.txt et affichez les données de chaque livre dans une card bootstrap sur la page home.php s'il y a des données dans le fichier.
