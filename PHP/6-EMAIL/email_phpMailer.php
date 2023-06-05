@@ -1,3 +1,65 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+if($_POST){
+
+    $username = $_POST['nom'] . ' ' . $_POST['prenom'];
+    $userEmail = $_POST['email'];
+    $userSujet = $_POST['sujet'];
+    $userMessage = $_POST['message'];
+
+// Instanciation de la classe PHPMailer. Le true permet de lever les exceptions en cas de problème.
+$mail = new PHPMailer(true);
+
+// Try catch pour lever les exceptions en cas de problème.Dans le try on met tout le code qu'on veut essayer et dans le catch on met ce qu'on veut faire si ça ne marche pas.
+try {
+    
+    $mail->SMTPDebug = 0; // activer le debug pour voir les erreurs   
+
+    $mail->isSMTP(); // On utilise SMTP pour envoyer le mail
+
+    $mail->Host       = 'smtp.gmail.com';  // Serveur SMTP que l'on va utiliser(ici gmail)
+
+    $mail->SMTPAuth   = true; // On autorise l'authentification SMTP
+
+    $mail->Username   = 'VOTRE_EAMIL_POUR_AUTHENTIFICATION'; // Adresse email du compte SMTP
+
+    $mail->Password   = 'VOTRE_MOT_DE_PASSE_D\'APPLICATION'; // Mot de passe du compte SMTP.Pour avoir le mot de passe d'app il faut aller dans paramètre de compte google et ensuite dans sécurité et créer un mot de passe d'application
+
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Activer le chiffrement TLS; `PHPMailer::ENCRYPTION_SMTPS` également accepté
+
+    $mail->Port       = 465; // Le port TCP à utiliser, 587 pour TLS, 465 pour SSL
+
+    //Recipients
+    $mail->setFrom('romyklk2210@gmail.com', 'COURS PHP'); // Adresse email de l'expéditeur et le nom de l'expéditeur
+    $mail->addAddress($userEmail, $username);    // Adresse email du destinataire et le nom du destinataire
+    $mail->addReplyTo($userEmail, $username); // Adresse email de réponse et le nom de réponse
+
+
+    //Content
+    $mail->isHTML(true); //Permet d'envoyer le mail au format HTML
+    $mail->Subject = $userSujet; // Sujet du mail
+    $mail->Body    = $userMessage; // Contenu du mail au format HTML
+    $mail->CharSet = 'UTF-8'; // Permet d'envoyer les caractères spéciaux
+
+    $mail->send(); // Validation de l'envoi du mail
+
+    echo 'Votre message a bien été envoyé'; // Affichage du message si le mail a bien été envoyé
+
+} catch (Exception $e) { // Si le mail n'a pas été envoyé alors on affiche le message d'erreur qui est en paramètre de l'exception
+    echo "Erreur lors de l'envoi du mail: {$mail->ErrorInfo}"; // Affichage du message d'erreur
+}
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
