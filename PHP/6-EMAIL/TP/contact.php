@@ -1,3 +1,116 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+// Vérification de la soumission du formulaire
+if($_SERVER['REQUEST_METHOD'] ==="POST")
+{
+    // Je récupère les données du formulaire dans des variables
+    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : '';
+    $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
+    $civilite = isset($_POST['civilite']) ? $_POST['civilite'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $sujet = isset($_POST['sujet']) ? $_POST['sujet'] : '';
+    $client = isset($_POST['client']) ? $_POST['client'] : '';
+    $message = isset($_POST['message']) ? $_POST['message'] : '';
+    
+    // Je définis un tableau d'erreurs vide
+    $erreurs = [];
+
+    // Je vérifie que les champs obligatoires sont remplis
+    if(empty($prenom))
+    {
+        $erreurs['prenom'] = "Le prénom est obligatoire";
+    }
+
+    if(empty($nom))
+    {
+        $erreurs['nom'] = "Le nom est obligatoire";
+    }
+
+    //filter_var() est une fonction qui permet de valider des données selon un filtre.Ici on utilise le filtre FILTER_VALIDATE_EMAIL qui permet de valider le format d'un email
+    if(empty($email))
+    {
+        $erreurs['email'] = "L'email est obligatoire";
+    }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        $erreurs['email'] = "L'email n'est pas valide";
+    }
+
+    if(empty($sujet))
+    {
+        $erreurs['sujet'] = "Le sujet est obligatoire";
+    }
+
+    if(empty($message))
+    {
+        $erreurs['message'] = "Le message est obligatoire";
+    }elseif(strlen($message) < 20)
+    {
+        $erreurs['message'] = "Le message doit contenir au moins 20 caractères";
+    }
+
+    // Fonction d'envoi de mail
+    function envoyerMail($to,$ubject,$content)
+    {
+        // Configuration de PHPMailer
+        require 'vendor/autoload.php';
+        $mail = new PHPMailer();
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPSecure = 'tls';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'VOTRE_ADRESSE_EMAIL';
+        $mail->Password = 'VOTRE_MOT_DE_PASSE_D\'APPLICATION';
+        $mail->Port = 587;
+
+        // Paramètres du mail
+        $mail->setFrom('VOTRE_ADRESSE_EMAIL', 'Contact Site');
+        $mail->addAddress($to);
+        $mail->Subject = $ubject;
+        $mail->isHTML(true);
+        $mail->Body = $content;
+        $mail->CharSet = 'UTF-8';
+
+        // Envoi du mail
+        if($mail->send())
+        {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    // Si le tableau d'erreurs est vide, je peux envoyer le mail
+    if(empty($erreurs)){
+
+        $toAdmin= 'bayika3171@soremap.com';
+        $subjectAdmin = 'Nouveau message de '.$prenom.' '.$nom.' - à propos '.$sujet;
+        $contentAdmin = $message;
+
+        if(envoyerMail($toAdmin,$subjectAdmin,$contentAdmin))
+        {
+           $subjectToClient = 'Confirmation de réception de votre message';
+           $contentToClient = "<strong>Bonjour $civilite $prenom $nom,</strong><br><br>";
+            $contentToClient .= "Nous avons bien reçu votre message et nous vous en remercions.<br><br>";
+            $contentToClient .= "Nous vous répondrons dans les meilleurs délais.<br><br>";
+            $contentToClient .= "Cordialement,<br><br>";
+            $contentToClient .= "L'équipe de la boutique <span style='color:red'>monsite.com</span>";
+
+            if(envoyerMail($email, $subjectToClient, $contentToClient)){
+                $alert = "<div class='alert alert-success'>Votre message a bien été envoyé</div>";
+                echo $alert;
+            }
+            
+        }
+    }
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
