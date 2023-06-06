@@ -61,3 +61,29 @@ Si l'utilisateur essaie d'accéder à la page paiement.php sans cliquer sur le b
 **8** <span style="color:blue;font-weight:bold">Affichage des livres stockés dans le fichier livres.txt sur le front  </span>
 
 Parcourez le fichier livres.txt et affichez les données de chaque livre dans une card bootstrap sur la page home.php s'il y a des données dans le fichier.
+
+
+
+## <span style="color:blue;font-weight:bold">Bonus </span>
+
+**9** <span style="color:blue;font-weight:bold">Enrégistrement en BDD </span>
+Créez une base de données nommée `tp_bibliotheque` contenant une table `livres` avec les champs qu'il faut pour stocker les données saisies par l'utilisateur. Enregistrez les données saisies par l'utilisateur dans la base de données.
+
+**10** Créez une page `inscription.php` contenant un formulaire d'inscription avec les champs suivants:
+  - [x] nom
+  - [x] prenom
+  - [x] email(avec un filtre de validation d'email)
+  - [x] mot de passe (crypté avec la fonction password_hash)Password_hash() est une fonction php qui permet de crypter un mot de passe. Elle prend en paramètre le mot de passe à crypter et un algorithme de cryptage. Elle retourne le mot de passe crypté.
+    Exemple: password_hash('monmotdepasse', PASSWORD_DEFAULT) // renvoie le mot de passe crypté avec l'algorithme par défaut de PHP
+    PASSWORD_DEFAULT est un algorithme de cryptage par défaut de PHP
+    - [x] confirmation du mot de passe
+
+**11** Créez une page table `utilisateurs` avec les champs suivants:
+  - [x] id (auto-incrémenté et clé primaire )
+  - [x] nom (varchar(80))
+  - [x] prenom (varchar(200))
+  - [x] email(varchar(100))
+  - [x] mot de passe(varchar(255))
+  - [x] date d'inscription(datetime)
+  - [ ] statut(int(1)) : 0 pour un utilisateur normal et 1 pour un administrateur. Tous les utilisateurs sont des utilisateurs normaux par défaut.
+  
