@@ -28,4 +28,4 @@ var_dump($_SESSION);
 
 //session_destroy(); // Supprime la session mais elle existe toujours dans le fichier sess_ du serveur
 
-var_dump($_SESSION); // On voit que la session existe toujours mais elle est vide
+//var_dump($_SESSION); // On voit que la session existe toujours mais elle est vide
