@@ -41,7 +41,6 @@ try {
     $mail->addAddress($userEmail, $username);    // Adresse email du destinataire et le nom du destinataire
     $mail->addReplyTo($userEmail, $username); // Adresse email de réponse et le nom de réponse
 
-
     //Content
     $mail->isHTML(true); //Permet d'envoyer le mail au format HTML
     $mail->Subject = $userSujet; // Sujet du mail
