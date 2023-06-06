@@ -86,6 +86,12 @@ if($_SERVER['REQUEST_METHOD'] ==="POST")
     // Si le tableau d'erreurs est vide, je peux envoyer le mail
     if(empty($erreurs)){
 
+        // TODO 2 : Récupérer tous les messages du fichier messages.txt dans un tableau en utilisant la fonction file()
+
+        // En utilisant la fonction in_array(), je vérifie l'utilisateur n'a pas déjà envoyé un message identique
+        
+        // Si c'est le cas, j'affiche un message d'erreur
+
         $toAdmin= 'bayika3171@soremap.com';
         $subjectAdmin = 'Nouveau message de '.$prenom.' '.$nom.' - à propos '.$sujet;
         $contentAdmin = $message;
@@ -102,6 +108,8 @@ if($_SERVER['REQUEST_METHOD'] ==="POST")
             if(envoyerMail($email, $subjectToClient, $contentToClient)){
                 $alert = "<div class='alert alert-success'>Votre message a bien été envoyé</div>";
                 echo $alert;
+
+                //TODO Si tout s'est bien passé, créer un fichier messages.txt et y enregistrer les données du formulaire
             }
             
         }
