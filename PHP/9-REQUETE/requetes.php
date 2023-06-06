@@ -43,7 +43,9 @@ var_dump($bdd);
 
 // exec() est utilisée pour la formulation de requêtes ne retournant pas de jeu de résultats : INSERT, UPDATE, DELETE. exec() renvoie le nombre de lignes affectées par la requête ou FALSE si une erreur survient.
 
-$request = $bdd->exec("INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES ('Jean', 'Dujardin', 'm', 'informatique', '2018-02-20', 2000)");
+$sqlReq = "INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES ('Jean', 'Dujardin', 'm', 'informatique', '2018-02-20', 2000)";
+
+$request = $bdd->exec($sqlReq);
 
 echo "Nombre d'enregistrements affectés par l'INSERT : $request <br>";
 echo "L'id du dernier enregistrement est : " . $bdd->lastInsertId() . "<br>";
