@@ -89,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] ==="POST")
         // TODO 2 : Récupérer tous les messages du fichier messages.txt dans un tableau en utilisant la fonction file()
 
         // En utilisant la fonction in_array(), je vérifie l'utilisateur n'a pas déjà envoyé un message identique
-        
+
         // Si c'est le cas, j'affiche un message d'erreur
 
         $toAdmin= 'bayika3171@soremap.com';
@@ -143,6 +143,11 @@ if($_SERVER['REQUEST_METHOD'] ==="POST")
 
                     <div class="form-group my-1">
                         <input type="text" name="prenom" id="prenom" placeholder="Votre prénom" class="form-control">
+                        <?php if(isset($erreurs['prenom'])) : ?>
+                            <span class="text-danger">
+                                <?= $erreurs['prenom'] ?>
+                            </span>
+                        <?php endif; ?> 
                     </div>
 
                     <div class="form-group my-1">
