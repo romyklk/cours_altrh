@@ -192,3 +192,19 @@ $request3->execute();
 
 $em = $request3->fetch(PDO::FETCH_ASSOC);
 echo implode(' ', $em) . "<br>";
+
+echo "<h3>Requête préparée avec prepare() et bindvalue()</h3>";
+
+$nom = 'Vignal';
+// Avec bindValue(), on peut passer dans le marqueur nominatif une variable ou une valeur . On n'est pas obligé de passer par une variable comme avec bindParam()
+
+// Récupérer les informations de l'employé dont le nom est Vignal
+
+// Préparation de la requête
+$request4 = $bdd->prepare("SELECT * FROM employes WHERE nom = :nom");
+
+// On associe le marqueur nominatif :nom à la valeur 'Vignal'
+$request4->bindValue(':nom', 'Vignal', PDO::PARAM_STR);
+//$request4->bindValue(':nom', $nom, PDO::PARAM_STR);
+// On exécute la requête
+$request4->execute();
