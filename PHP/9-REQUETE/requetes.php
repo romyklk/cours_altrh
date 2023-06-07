@@ -42,9 +42,15 @@ INSERT INTO `employes` (`id_employes`, `prenom`, `nom`, `sexe`, `service`, `date
 
 Pour se connecter à une base de données, nous allons utiliser PDO (Php Data Object) qui est classe prédéfinie en PHP qui va nous permettre de se connecter à une base de données.L'avantage d'utiliser PDO est qu'elle compatible avec plusieurs SGBD (Système de Gestion de Base de Données) comme MySQL, Oracle, SQL Server, etc. On peut donc changer de SGBD sans avoir à changer de code.
 */
-$connect = new PDO('mysql:host=localhost;dbname=formation','root','',  
-                    [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']);
+$connect = new PDO(
+    'mysql:host=localhost;dbname=formation',
+    'root',
+    '',
+    [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+    ]
+);
 
 var_dump($connect);
 
@@ -123,16 +129,66 @@ echo "Nombre d'employés : " . $employes->rowCount() . "<br>";
 
 //$allEmployes = $employes->fetch(PDO::FETCH_ASSOC);
 
-while ($allEmployes = $employes->fetch(PDO::FETCH_ASSOC)) {
+/* while ($allEmployes = $employes->fetch(PDO::FETCH_ASSOC)) {
 
-    echo "<div>";
+    echo "<div >";
     echo "<p> Bonjour je suis " . $allEmployes['prenom'] . " " . $allEmployes['nom'] . " du service " . $allEmployes['service'] . " j'ai un salaire de " . $allEmployes['salaire'] . "€ et j'ai été embauché le " . $allEmployes['date_embauche'] . "</p>";
     echo "</div><hr>";
-
-}
+} */
 
 // En utilisant fetch(), si votre requête renvoie plusieurs lignes, il faut faire une boucle pour parcourir toutes les lignes du jeu de résultats, sinon vous n'aurez que la première ligne.Par contre, si votre requête ne renvoie qu'une seule ligne, vous n'êtes pas obligé de faire une boucle.
 
 // En utilisant fetchAll(), il n'est pas nécessaire de faire une boucle car on récupère toutes les informations dans un tableau multidimensionnel. Donc on peut parcourir le tableau avec une boucle foreach ou for.
 
 // TODO : Faire une requête pour récupérer les informations de tous les employés et les afficher dans un tableau HTML
+
+$req = $bdd->query("SELECT * FROM employes");
+
+echo "<table border='1' style='border-collapse: collapse; width: 100%; text-align: center;'><tr>";
+for($i = 0; $i < $req->columnCount(); $i++) {
+    $colonne = $req->getColumnMeta($i);
+    echo "<th>$colonne[name]</th>";
+}
+echo "</tr>";
+while($ligne = $req->fetch(PDO::FETCH_ASSOC)) {
+    echo "<tr>";
+    foreach($ligne as $value) {
+        echo "<td>$value</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+// columnCount() est une méthode de la classe PDOStatement qui permet de compter le nombre de colonnes retournées par la requête
+
+// getColumnMeta() est une méthode de la classe PDOStatement qui permet de récupérer les informations sur les colonnes retournées par la requête
+
+echo "<hr><h2>Requête préparée avec prepare() et execute()</h2>";
+
+echo "<h3>Requête préparée avec prepare() et bindParam()</h3>";
+
+/* 
+
+Une requête préparée est préconisée si vous exécutez plusieurs fois la même requête et ainsi éviter de répéter le cycle complet analyse / interprétation / exécution réalisé par le SGBD (Système de Gestion de Base de Données). Les requêtes préparées sont aussi utilisées pour assainir les données (se prémunir des injections SQL) : cela permet de distinguer (et donc de neutraliser) ce qui est de la requête SQL et ce qui sont des données fournies par l'utilisateur.
+
+*/
+
+$prenom = 'Chloe';
+
+// On prépare la requête et on lui passe un marqueur nominatif :prenom qui est un paramètre qu'on va envoyer à la requête plus tard
+$request3 = $bdd->prepare("SELECT * FROM employes WHERE prenom = :prenom");
+
+// On associe le marqueur nominatif :prenom à la variable $prenom avec la méthode bindParam()
+// bindParam() reçoit exclusivement une variable vers laquelle pointe le marqueur nominatif :prenom
+$request3->bindParam(':prenom', $prenom, PDO::PARAM_STR);
+
+// PDO::PARAM_STR est une constante de la classe PDO qui indique que le paramètre attendu est de type string
+// PDO::PARAM_INT est une constante de la classe PDO qui indique que le paramètre attendu est de type int
+// PDO::PARAM_BOOL est une constante de la classe PDO qui indique que le paramètre attendu est de type bool
+// Lien pour voir toutes les constantes de PDO : https://www.php.net/manual/fr/pdo.constants.php
+
+// On exécute la requête
+$request3->execute();
+
+$em = $request3->fetch(PDO::FETCH_ASSOC);
+echo implode(' ', $em) . "<br>";
