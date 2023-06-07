@@ -71,5 +71,23 @@ echo "</pre>"; */
 
 // fetchColumn() : méthode qui retourne une seule colonne du jeu de résultats en cours. Utile pour récupérer un seul résultat.
 
-$userInfo = $result->fetch();
-var_dump($userInfo);
+// PDO::FETCH_ASSOC : retourne un tableau associatif
+// PDO::FETCH_NUM : retourne un tableau indexé
+// PDO::FETCH_BOTH : retourne un tableau associatif et indexé
+// Lien pour voir tous les paramètres de fetch() : https://www.php.net/manual/en/pdostatement.fetch.php
+
+$userInfo = $result->fetch(PDO::FETCH_ASSOC);
+//var_dump($userInfo);
+echo "Bonjour je suis " . $userInfo['prenom'] . " " . $userInfo['nom'] . " du service " . $userInfo['service'] . " j'ai un salaire de " . $userInfo['salaire'] . "€ et j'ai été embauché le " . $userInfo['date_embauche'] . "<br>";
+
+
+// Faire une requête pour récupérer les informations de tous les employés.
+
+$employes = $bdd->query("SELECT * FROM employes");
+
+// Afficher le nombre d'employés
+echo "Nombre d'employés : " . $employes->rowCount() . "<br>";
+// rowCount() est une méthode de la classe PDOStatement qui permet de compter le nombre de lignes retournées par la requête
+
+$allEmployes = $employes->fetch(PDO::FETCH_ASSOC);
+
