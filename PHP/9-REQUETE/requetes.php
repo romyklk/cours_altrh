@@ -131,7 +131,7 @@ while ($allEmployes = $employes->fetch(PDO::FETCH_ASSOC)) {
 
 }
 
-// En utilisant fetc(), si votre requête renvoie plusieurs lignes, il faut faire une boucle pour parcourir toutes les lignes du jeu de résultats, sinon vous n'aurez que la première ligne.Par contre, si votre requête ne renvoie qu'une seule ligne, vous n'êtes pas obligé de faire une boucle.
+// En utilisant fetch(), si votre requête renvoie plusieurs lignes, il faut faire une boucle pour parcourir toutes les lignes du jeu de résultats, sinon vous n'aurez que la première ligne.Par contre, si votre requête ne renvoie qu'une seule ligne, vous n'êtes pas obligé de faire une boucle.
 
 // En utilisant fetchAll(), il n'est pas nécessaire de faire une boucle car on récupère toutes les informations dans un tableau multidimensionnel. Donc on peut parcourir le tableau avec une boucle foreach ou for.
 
