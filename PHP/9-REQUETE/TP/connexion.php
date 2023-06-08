@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if ($req->rowCount() <= 0) {
         $erreur .= '<div class="alert alert-danger">Cet email n\'existe pas</div>';
+
     } else {
         // On récupère les données de l'utilisateur dans une variable $userData
         $userData = $req->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             // On crée une session auth pour stocker les informations de l'utilisateur connecté. Ses informations seront accessibles sur toutes les pages du site car elles sont stockées dans la superglobale $_SESSION
 
-            $_SESSION['auth']['token'] = uniqid();
+           // $_SESSION['auth']['token'] = uniqid();
             $_SESSION['auth']['id'] = $userData['id_user'];
             $_SESSION['auth']['nom'] = $userData['nom'];
             $_SESSION['auth']['prenom'] = $userData['prenom'];

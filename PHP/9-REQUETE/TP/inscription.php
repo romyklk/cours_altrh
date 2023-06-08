@@ -43,12 +43,17 @@ if($_SERVER['REQUEST_METHOD'] ==="POST")
     L'avantage d'utiliser PASSWORD_DEFAULT est que si un jour un nouvel algorithme de hashage plus sécurisé est disponible, il sera utilisé automatiquement.
     */
     if(empty($erreur)){
+
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
         $insert = $pdo->prepare("INSERT INTO user (nom, prenom, email, password) VALUES (:nom, :prenom, :email, :password)");
+
         $insert->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
         $insert->bindParam(':prenom', $_POST['prenom'], PDO::PARAM_STR);
         $insert->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+
         $insert->bindParam(':password', $hash, PDO::PARAM_STR);
+        
         if($insert->execute()){
             header('location: connexion.php');
         }

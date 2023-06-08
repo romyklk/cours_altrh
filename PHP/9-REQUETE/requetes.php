@@ -145,14 +145,14 @@ echo "Nombre d'employés : " . $employes->rowCount() . "<br>";
 $req = $bdd->query("SELECT * FROM employes");
 
 echo "<table border='1' style='border-collapse: collapse; width: 100%; text-align: center;'><tr>";
-for($i = 0; $i < $req->columnCount(); $i++) {
+for ($i = 0; $i < $req->columnCount(); $i++) {
     $colonne = $req->getColumnMeta($i);
     echo "<th>$colonne[name]</th>";
 }
 echo "</tr>";
-while($ligne = $req->fetch(PDO::FETCH_ASSOC)) {
+while ($ligne = $req->fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
-    foreach($ligne as $value) {
+    foreach ($ligne as $value) {
         echo "<td>$value</td>";
     }
     echo "</tr>";
