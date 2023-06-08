@@ -1,6 +1,8 @@
 <?php
 require_once 'inc/init.php';
 
+$showMessage = '';
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     // A - Protection contre les failles XSS (Cross Site Scripting)
@@ -31,10 +33,30 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $query->execute();
 
         // rowCount() permet de compter le nombre de lignes retournées par la requête. Si le nombre de lignes est supérieur à 0, cela signifie que l'utilisateur existe en base de données
-        if($query->rowCount >0){
+        if ($query->rowCount() > 0) {
 
-        }else{
+            //Je récupère les données de l'utilisateur dans une variable $user
+            $user = $query->fetch(PDO::FETCH_ASSOC);
 
+            // je vérifie si le mot de passe saisi par l'utilisateur correspond au mot de passe en base de données($user['password'])
+            // password_verify() permet de vérifier si le mot de passe saisi par l'utilisateur correspond au mot de passe haché en base de données
+
+            if(password_verify($password,$user['password'])){
+
+
+
+            }else{
+                $showMessage = '<div class="alert alert-warning text-center"> 
+                email ou mot de passe incorrect
+                </div>';
+            }
+
+            
+        
+        } else {
+            $showMessage = '<div class="alert alert-danger"> 
+                email ou mot de passe incorrect
+            </div>';
         }
     
     }
@@ -54,6 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <div class="row">
         <div class="col-md-6 m-auto shadow p-4">
+            <?= $showMessage ?>
             <form action="" method="post">
 
                 <input type="email" name="email" placeholder="Entrez votre email" class="form-control my-3">
