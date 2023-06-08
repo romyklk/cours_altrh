@@ -29,7 +29,7 @@
                         </li>
                         <a class="nav-link" href="connexion.php">Connexion</a>
                         </li>
-                        <a class="nav-link" href="#">Profil</a>
+                        <a class="nav-link" href="profil.php">Profil</a>
                         </li>
                 </div>
             </div>

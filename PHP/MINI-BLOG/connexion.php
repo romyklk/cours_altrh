@@ -42,7 +42,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             // password_verify() permet de vérifier si le mot de passe saisi par l'utilisateur correspond au mot de passe haché en base de données
 
             if(password_verify($password,$user['password'])){
+                // je stocke les données de l'utilisateur dans la session.Ici je ne fais plus session_start() car je l'ai déjà fait dans init.php
 
+                $_SESSION['user']['id'] = $user['id_user'];
+                $_SESSION['user']['nom'] = $user['nom'];
+                $_SESSION['user']['prenom'] = $user['prenom'];
+                $_SESSION['user']['email'] = $user['email'];
+                $_SESSION['user']['createdAt'] = $user['date_inscription'];
+
+                // je redirige l'utilisateur vers la page de profil
+
+                header('Location: profil.php');
+                exit; // je stoppe l'exécution du code
 
 
             }else{
