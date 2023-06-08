@@ -7,6 +7,13 @@ if (!isLogged()) {
     exit;
 }
 
+// Gestion de la déconnexion. Si l'utilisateur a cliqué sur le lien "Deconnexion" alors on détruit sa session et on le redirige vers la page d'accueil
+if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
 
 ?>
 

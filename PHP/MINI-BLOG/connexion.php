@@ -1,6 +1,13 @@
 <?php
 require_once 'inc/init.php';
 
+
+// redirection si l'utilisateur est déjà connecté vers la page de profil
+
+if(isLogged()){
+    header('Location: profil.php');
+}
+
 $showMessage = '';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){

@@ -2,6 +2,13 @@
 // 1. inclure init qui contient la connexion à la base de données(config.php)
 require_once 'inc/init.php';
 
+// redirection si l'utilisateur est déjà connecté vers la page de profil
+
+if (isLogged()) {
+    header('Location: profil.php');
+}
+
+
 // 2. Traitement du formulaire
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
