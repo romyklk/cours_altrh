@@ -62,12 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $imgBdd = URL . $nomImage;
 
-        echo $imgBdd . '<br>';
+       // echo $imgBdd . '<br>';
 
         // 5- je déclare une constante afin de stocker le chemin complet du dossier dans lequel le script est exécuté
         define("ROOT", $_SERVER['DOCUMENT_ROOT'] . '/cours_altrh/PHP/10-IMAGE/public/profil/');
 
-        echo ROOT . '<br>';
+       // echo ROOT . '<br>';
 
         $imgDossier = ROOT . $nomImage;
         /* 
