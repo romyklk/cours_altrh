@@ -29,8 +29,9 @@ Revoir les bases de la programmation en PHP et MySQL.
     - `prenom` VARCHAR(255)
     - `email` VARCHAR(255)
     - `password` VARCHAR(255)
+    - `date_inscription` DATETIME DEFAULT CURRENT_TIMESTAMP
 
-    `CREATE TABLE `blog_php`.`users` (`id_user` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(255) NOT NULL , `prenom` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_user`)) ENGINE = InnoDB;`
+   CREATE TABLE `miniblog`.`users` (`id_user` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(255) NOT NULL , `prenom` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , `date_inscription` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id_user`)) ENGINE = InnoDB;
 
 5. Créer un fichier `config.php` qui va contenir les informations de connexion à la base de données.
 
