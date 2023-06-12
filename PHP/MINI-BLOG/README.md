@@ -68,7 +68,7 @@ Revoir les bases de la programmation en PHP et MySQL.
 15. Afficher dans des card tous les articles(titre, image, date(au format français), catégorie et auteur)  par ordre décroissant de date sur la page d'accueil avec un bouton `Lire la suite` qui va rediriger l'utilisateur vers la page `detail_article.php` qui va afficher l'article en entier.
 
 
-16. Sur la page `detail_article.php`, afficher l'article en entier avec un bouton `Retour` qui va rediriger l'utilisateur vers la page d'accueil.
+16. Sur la page `detail_article.php`, afficher l'article en entier avec un bouton `Retour` qui va rediriger l'utilisateur vers la page d'accueil.Si l'utilisateur passe dans l'url l'id d'un article qui n'existe pas, rediriger l'utilisateur vers la page d'accueil.
 
 
 17. Dans le profil de l'utilisateur, afficher tous les articles de l'utilisateur connecté avec la possibilité de modifier ou supprimer un article.
@@ -85,7 +85,35 @@ Revoir les bases de la programmation en PHP et MySQL.
     - Inscription
     - Connexion
 
-19. Faire en sorte que l'utilisateur ne puisse pas accéder aux pages `inscription.php`, `connexion.php` et `ajout_article.php` s'il est déjà connecté. 
+19. Faire en sorte que l'utilisateur ne puisse pas accéder aux pages `inscription.php`, `connexion.php` et `ajout_article.php` s'il est déjà connecté.
+
+***SUITE DU PROJET***
+20. Sous le détail de l'article, afficher un formulaire de commentaire avec les champs suivants :
+    - Commentaire
+
+21. Créer une table `comments` avec les champs suivants :
+    - id_comment PRIMARY KEY AUTO_INCREMENT
+    - content TEXT
+    - id_user INT NOT NULL
+    - id_article INT NOT NULL
+    - created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+22. Faire le traitement du formulaire de commentaire et insérer les données dans la table `comments`.
+
+23. Afficher tous les commentaires de l'article en question sous le detail de l'article.
+
+24. Faire en sorte que seul les utilisateurs connectés puissent commenter un article.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

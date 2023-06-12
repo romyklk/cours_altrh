@@ -14,6 +14,18 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     exit;
 }
 
+// Récupération des articles de l'utilisateur
+
+$data = $db->prepare('SELECT * FROM article WHERE id_user = :user_id');
+$data->bindValue(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+$data->execute();
+
+$articles = $data->fetchAll(PDO::FETCH_ASSOC);
+
+var_dump($articles);
+
+
+
 
 ?>
 
@@ -43,6 +55,46 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <a href="ajout_article.php" class="btn btn-outline-primary">Ajout d'article</a>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <h4 class="text-center my-4">
+            Vos articles
+        </h4>
+        <?php if (count($articles) <= -0) : ?>
+            <div class="alert alert-info">
+                Vous n'avez pas encore d'article
+            </div>
+        <?php else : ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <?php
+                        for ($i = 0; $i < $data->columnCount(); $i++) {
+                            $colonne = $data->getColumnMeta($i);
+                            echo "<th>$colonne[name]</th>";
+                        }
+
+                        foreach ($articles as $article) {
+                            echo '<tr>';
+                            echo '<td>' . $article['id_article'] . '</td>';
+                            echo '<td>' . $article['titre'] . '</td>';
+                            echo '<td>' . $article['categorie'] . '</td>';
+                            echo '<td>' . substr($article['contenu'],0,100). '</td>';
+                            echo '<td> <img class="img-fluid w-25" src="'.URL . $article['image'] . '"></td>';
+                            echo '<td>' . $article['date_ajout'] . '</td>';
+                            echo
+                            '<td>' . $article['id_user'] . '</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                    </tr>
+                </thead>
+
+            </table>
+        <?php endif; ?>
+
+
     </div>
 
 
