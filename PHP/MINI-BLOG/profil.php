@@ -22,11 +22,6 @@ $data->execute();
 
 $articles = $data->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($articles);
-
-
-
-
 ?>
 
 <?php require_once 'Common/header.php'; ?>
@@ -83,8 +78,7 @@ var_dump($articles);
                             echo '<td>' . substr($article['contenu'],0,100). '</td>';
                             echo '<td> <img class="img-fluid w-25" src="'.URL . $article['image'] . '"></td>';
                             echo '<td>' . $article['date_ajout'] . '</td>';
-                            echo
-                            '<td>' . $article['id_user'] . '</td>';
+                            echo'<td>' . $article['id_user'] . '</td>';
                             echo '</tr>';
                         }
                         ?>
