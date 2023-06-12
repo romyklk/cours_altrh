@@ -57,10 +57,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($errors)){
         // Je fais une requête préparée pour insérer les données dans la base de données
         $req= $db->prepare("INSERT INTO users (nom, prenom, email, password) VALUES (:nom, :prenom, :email, :password)");
+
         $req->bindValue(':nom', $nom, PDO::PARAM_STR);
+
         $req->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+
         $req->bindValue(':email', $email, PDO::PARAM_STR);
+
         $req->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        
         if($req->execute()){
             header('Location: connexion.php');
         }

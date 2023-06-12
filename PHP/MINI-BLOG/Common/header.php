@@ -1,5 +1,9 @@
+<?php
+require_once 'inc/init.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +13,7 @@
     <title>Mini Blog</title>
 </head>
 
-<body>
+<body class="bg-secondary text-white">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -22,15 +26,27 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">Article</a>
                         </li>
-                        <a class="nav-link" href="inscription.php">Inscription</a>
-                        </li>
-                        <a class="nav-link" href="connexion.php">Connexion</a>
-                        </li>
-                        <a class="nav-link" href="profil.php">Profil</a>
-                        </li>
+
+                        <?php if (isLogged()) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profil.php">Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ajout_article.php">Ajout article</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="inscription.php">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="connexion.php">Connexion</a>
+                            </li>
+                        <?php endif; ?>
+
                 </div>
             </div>
         </nav>

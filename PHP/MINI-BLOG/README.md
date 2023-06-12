@@ -55,10 +55,13 @@ Revoir les bases de la programmation en PHP et MySQL.
     - `catégorie` VARCHAR(100)
     - `contenu` TEXT
     - `image` VARCHAR(255)
-    - `date` DATETIME
+    - `date_ajout` DATETIME DEFAULT CURRENT_TIMESTAMP
     - `id_user` INT NOT NULL
 
-    `CREATE TABLE `blog_php`.`article` ( `id_article` INT NOT NULL AUTO_INCREMENT , `titre` VARCHAR(255) NOT NULL , `categorie` VARCHAR(100) NOT NULL , `contenu` TEXT NOT NULL , `image` VARCHAR(255) NOT NULL , `date` DATETIME NOT NULL , `id_user` INT NOT NULL , PRIMARY KEY (`id_article`)) ENGINE = InnoDB;`
+    `CREATE TABLE `miniblog`.`article` (`id_article` INT NOT NULL AUTO_INCREMENT , `titre` VARCHAR(255) NOT NULL , `catégorie` VARCHAR(100) NOT NULL , `contenu` TEXT NOT NULL , `image` VARCHAR(255) NOT NULL , `date_ajout` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , `id_user` INT NOT NULL , PRIMARY KEY (`id_article`)) ENGINE = InnoDB;`
+
+    Vue relationnelle de la table `article` :
+    `ALTER TABLE `article` ADD FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;`
 
 14. Faire tout le code HTML et PHP de la page `ajout_article.php` qui va permettre à l'utilisateur de créer un article. N'oubliez pas de faire le traitement du formulaire avant d'insérer les données dans la table `article`. (Tous les champs sont obligatoires etc...)
 
@@ -82,7 +85,7 @@ Revoir les bases de la programmation en PHP et MySQL.
     - Inscription
     - Connexion
 
-19. Faire en sorte que l'utilisateur ne puisse pas accéder aux pages `inscription.php`, `connexion.php` et `ajout_article.php` s'il est déjà connecté.
+19. Faire en sorte que l'utilisateur ne puisse pas accéder aux pages `inscription.php`, `connexion.php` et `ajout_article.php` s'il est déjà connecté. 
 
 
 
