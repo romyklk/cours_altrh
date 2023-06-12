@@ -75,8 +75,6 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }
 
-
-        
     }
 
 }
