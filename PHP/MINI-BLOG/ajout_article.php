@@ -10,6 +10,8 @@ if (!isLogged()) {
 
 $errors = [];
 
+$showMessage = '';
+
 if($_SERVER['REQUEST_METHOD'] =="POST"){
 
     // A - Protection contre les failles XSS (Cross Site Scripting)
@@ -57,6 +59,24 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
     if(empty($errors)){
         $nomImage = bin2hex(random_bytes(16)). '.' . $extension;
         move_uploaded_file($_FILES['image']['tmp_name'], BASE . $nomImage);
+
+        // enregistrement de l'article en BDD
+        $id_user = $_SESSION['user']['id'];
+        $query = $db->prepare('INSERT INTO article (titre, categorie,contenu,image,id_user) VALUES (:titre,:categorie,:contenu,:image,:id_user)');
+
+        $query->bindValue(':titre',$titre,PDO::PARAM_STR);
+        $query->bindValue(':categorie',$categorie,PDO::PARAM_STR);
+        $query->bindValue(':contenu',$contenu,PDO::PARAM_STR);
+        $query->bindValue(':image',$nomImage,PDO::PARAM_STR);
+        $query->bindValue(':id_user',$id_user,PDO::PARAM_INT);
+        if($query->execute()){
+            $showMessage .='<div class="alert alert-success">L\'article a été ajouté</div>';
+        }else{
+            $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
+        }
+
+
+        
     }
 
 }
@@ -75,6 +95,7 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
 
     <div class="row">
         <div class="col-md-9 m-auto">
+            <?= $showMessage ?>
             <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="input-group mb-3">
