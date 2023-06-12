@@ -12,10 +12,10 @@ $errors = [];
 
 $showMessage = '';
 
-if($_SERVER['REQUEST_METHOD'] =="POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // A - Protection contre les failles XSS (Cross Site Scripting)
-    foreach($_POST as $key => $value){
+    foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlspecialchars(addslashes($value));
     }
     // Je récupère les données du formulaire dans des variables
@@ -24,59 +24,71 @@ if($_SERVER['REQUEST_METHOD'] =="POST"){
     $contenu = isset($_POST['contenu']) ? $_POST['contenu'] : '';
 
     // B - Validation du formulaire
-    if(empty($titre)){
+    if (empty($titre)) {
         $errors['titre'] = "Le titre est obligatoire";
     }
 
-    if(empty($categorie)){
+    if (empty($categorie)) {
         $errors['categorie'] = "La categorie est obligatoire";
     }
 
-    if(empty($contenu)){
+    if (empty($contenu)) {
         $errors['contenu'] = "Le contenu est obligatoire";
-    }elseif(strlen($contenu) < 20){
+    } elseif (strlen($contenu) < 20) {
         $errors['contenu'] = "Le contenu doit faire au moins 10 caractères";
     }
 
     // Gestion de l'image
-    if(empty($_FILES['image']['name'])){
+    if (empty($_FILES['image']['name'])) {
         $errors['image'] = "L'image est obligatoire";
     }
-    $tabExt = ['jpg','png','jpeg']; // Les extensions de fichiers autorisées
-    
-    $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION); 
+    $tabExt = ['jpg', 'png', 'jpeg']; // Les extensions de fichiers autorisées
+
+    $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
     $extension = strtolower($extension);
 
-    if(!in_array($extension,$tabExt)){
+    if (!in_array($extension, $tabExt)) {
         $errors['image'] = "L'extension n'est pas valide";
     }
 
-    if($_FILES['image']['size'] > 2000000){
+    if ($_FILES['image']['size'] > 2000000) {
         $errors['image'] = "L'image ne doit pas dépasser 2Mo";
     }
 
     // Si le formulaire est valide
-    if(empty($errors)){
-        $nomImage = bin2hex(random_bytes(16)). '.' . $extension;
+    if (empty($errors)) {
+        $nomImage = bin2hex(random_bytes(16)) . '.' . $extension;
         move_uploaded_file($_FILES['image']['tmp_name'], BASE . $nomImage);
 
         // enregistrement de l'article en BDD
         $id_user = $_SESSION['user']['id'];
         $query = $db->prepare('INSERT INTO article (titre, categorie,contenu,image,id_user) VALUES (:titre,:categorie,:contenu,:image,:id_user)');
 
-        $query->bindValue(':titre',$titre,PDO::PARAM_STR);
-        $query->bindValue(':categorie',$categorie,PDO::PARAM_STR);
-        $query->bindValue(':contenu',$contenu,PDO::PARAM_STR);
-        $query->bindValue(':image',$nomImage,PDO::PARAM_STR);
-        $query->bindValue(':id_user',$id_user,PDO::PARAM_INT);
-        if($query->execute()){
-            $showMessage .='<div class="alert alert-success">L\'article a été ajouté</div>';
-        }else{
+        $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+        $query->bindValue(':categorie', $categorie, PDO::PARAM_STR);
+        $query->bindValue(':contenu', $contenu, PDO::PARAM_STR);
+        $query->bindValue(':image', $nomImage, PDO::PARAM_STR);
+        $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+        if ($query->execute()) {
+            $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+        } else {
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }
-
     }
+}
 
+// gestion de la suppression d'un article
+if(isset($_GET['action']) && $_GET['action'] == 'delete'){
+    $id_article = $_GET['id_article'];
+    $query = $db->prepare('DELETE FROM article WHERE id_article = :id_article');
+    $query->bindValue(':id_article',$id_article,PDO::PARAM_INT);
+    if($query->execute()){
+        $showMessage .= '<div class="alert alert-success">L\'article a été supprimé</div>';
+        header('Location: profil.php');
+    }
+    else{
+        $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
+    }
 }
 
 ?>

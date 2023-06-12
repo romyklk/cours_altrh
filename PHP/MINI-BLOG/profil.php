@@ -69,6 +69,7 @@ $articles = $data->fetchAll(PDO::FETCH_ASSOC);
                             $colonne = $data->getColumnMeta($i);
                             echo "<th>$colonne[name]</th>";
                         }
+                        echo '<th>Actions</th>';
 
                         foreach ($articles as $article) {
                             echo '<tr>';
@@ -79,6 +80,9 @@ $articles = $data->fetchAll(PDO::FETCH_ASSOC);
                             echo '<td> <img class="img-fluid w-25" src="'.URL . $article['image'] . '"></td>';
                             echo '<td>' . $article['date_ajout'] . '</td>';
                             echo'<td>' . $article['id_user'] . '</td>';
+                            echo '<td><a href="ajout_article.php?action=update&id_article=' . $article['id_article'] . '" class="btn btn-warning mb-1">Modifier</a>
+                            <a href="ajout_article.php?action=delete&id_article=' . $article['id_article'] . '" class="btn btn-danger">Supprimer</a>
+                            </td>';
                             echo '</tr>';
                         }
                         ?>
