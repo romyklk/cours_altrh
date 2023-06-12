@@ -32,12 +32,12 @@ require_once 'inc/init.php';
 
                 $card = '';
                 $card .= '<div class="card my-2" style="width: 18rem;">';
-                $card .= '<img src="' . URL . $articles['image'] . '" class="card-img-top" alt="...">';
+                $card .= '<img src="' . URL . $articles['image'] . '" class="card-img-top img-thumbnail h-25" alt="...">';
                 $card .= '<div class="card-body">';
                 $card .= '<h5 class="card-title">' . $articles['titre'] . '</h5>';
                 $card .= '<h6 class="card-subtitle mb-2 text-muted">' . $userName . '</h6>';
-                $card .= '<p class="card-text">' . $articles['contenu'] . '</p>';
-                $card .= '<a href="detail_article.php?id=' . $articles['id_article'] . '" class="btn btn-primary">Voir l\'article</a>';
+                $card .= '<p class="card-text">' . substr($articles['contenu'],0,150) . '...</p>';
+                $card .= '<a href="detail_article.php?id=' . $articles['id_article'] . '" class="btn btn-primary">Lire la suite</a>';
                 $card .= '</div>';
                 $card .= '</div>';
                 echo $card;
