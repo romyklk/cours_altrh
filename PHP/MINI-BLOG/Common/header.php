@@ -13,7 +13,7 @@ require_once 'inc/init.php';
     <title>Mini Blog</title>
 </head>
 
-<body class="bg-secondary text-white">
+<body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
