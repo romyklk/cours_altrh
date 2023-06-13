@@ -119,10 +119,6 @@ Revoir les bases de la programmation en PHP et MySQL.
 
 
 
-
-
-
-
 # BONUS POUR ALLER PLUS LOIN
 
 1. En utilisant un token CSRF, faites en sorte de vérifier que le formulaire d'ajout d'article provient bien de l'utilisateur et non d'un bot. Vous pouvez utiliser la fonction `uniqid()` pour générer un token unique ou utiliser la fonction `bin2hex(random_bytes(32))` pour générer un token aléatoire.
