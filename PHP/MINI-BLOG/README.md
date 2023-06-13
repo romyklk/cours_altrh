@@ -108,6 +108,8 @@ Revoir les bases de la programmation en PHP et MySQL.
 
 26. Sur la page `articles.php`, afficher toutes les catégories d'articles dans un menu . Au clique sur une catégorie, afficher tous les articles de la catégorie en question.Si l'utilisateur passe dans l'url une catégorie qui n'existe pas, rediriger l'utilisateur vers la page d'accueil.Si l'utilisateur clique sur le lien `article.php`, afficher tous les articles.
 
+27. Dans le profil de l'utilisateur, afficher tous les commentaires de l'utilisateur avec la possibilité de supprimer un commentaire.
+
 
 
 
