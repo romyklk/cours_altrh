@@ -122,9 +122,10 @@ Revoir les bases de la programmation en PHP et MySQL.
 # BONUS POUR ALLER PLUS LOIN
 
 1. En utilisant un token CSRF, faites en sorte de vérifier que le formulaire d'ajout d'article provient bien de l'utilisateur et non d'un bot. Vous pouvez utiliser la fonction `uniqid()` pour générer un token unique ou utiliser la fonction `bin2hex(random_bytes(32))` pour générer un token aléatoire.
+Exemple: Lors de la connexion , créer un token dans la session user. Dans le formulaire d'ajout ou de modification d'article, créer un input hidden qui va contenir le token de la session user. Lors de la soumission du formulaire, vérifier que le token du formulaire est identique au token de la session user. Si c'est le cas, on peut faire le traitement du formulaire. Sinon, on le deconnecte et on le redirige vers la page de connexion.
 
-2. Sur la page `detail_article.php`, Si l'article appartient à l'utilisateur connecté, afficher un bouton `Modifier` et `Supprimer` sur l'article. Sinon afficher un bouton `Retour` qui va rediriger l'utilisateur vers la page `index.php` qui va afficher l'article en entier.
+1. Sur la page `detail_article.php`, Si l'article appartient à l'utilisateur connecté, afficher un bouton `Modifier` et `Supprimer` sur l'article. Sinon afficher un bouton `Retour` qui va rediriger l'utilisateur vers la page `index.php` qui va afficher l'article en entier.
 
-3. Faites en sorte de donner la possibilité à l'utilisateur de modifier son profil (nom, prénom, email et mot de passe).
+2. Faites en sorte de donner la possibilité à l'utilisateur de modifier son profil (nom, prénom, email et mot de passe).`Quasiment identique à la modification d'article sauf que l'on modifie les données de l'utilisateur connecté. Donc on va pré-remplir les champs du formulaire d'inscription avec les données de l'utilisateur connecté.`
 
-4. Faites en sorte de déconnecter automatiquement l'utilisateur au bout de 10 minutes d'inactivité. Pour cela, vous pouvez utiliser la fonction `time()` qui va retourner le timestamp actuel et le stocker dans une variable de session. Ensuite, à chaque fois que l'utilisateur va charger une page, vous allez comparer le timestamp actuel avec celui stocké dans la variable de session. Si la différence est supérieure à 10 minutes, vous détruisez la session et redirigez l'utilisateur vers la page d'accueil. Vous pouvez utiliser la fonction `header()` pour rediriger l'utilisateur. Vous pouvez aussi utiliser javascript pour voir si l'utilisateur est inactif depuis 10 minutes et le déconnecter automatiquement, en vérifiant s'il a cliqué sur un bouton ou s'il a scrollé la page ou s'il a tapé sur une touche du clavier.Voici un exemple en javascript :
+
