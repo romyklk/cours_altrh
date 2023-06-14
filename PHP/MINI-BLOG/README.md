@@ -92,11 +92,11 @@ Revoir les bases de la programmation en PHP et MySQL.
     - Commentaire
 
 21. Créer une table `comments` avec les champs suivants :
-    - id_comment PRIMARY KEY AUTO_INCREMENT
-    - content TEXT
-    - id_user INT NOT NULL
-    - id_article INT NOT NULL
-    - created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    - `id_comment` PRIMARY KEY AUTO_INCREMENT
+    - `content` TEXT
+    - `id_user` INT NOT NULL
+    - `id_article` INT NOT NULL
+    - `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 
 22. Faire le traitement du formulaire de commentaire et insérer les données dans la table `comments`.
 
@@ -111,21 +111,13 @@ Revoir les bases de la programmation en PHP et MySQL.
 27. Dans le profil de l'utilisateur, afficher tous les commentaires de l'utilisateur avec la possibilité de supprimer un commentaire.
 
 
-
-
-
-
-
-
-
-
 # BONUS POUR ALLER PLUS LOIN
 
 1. En utilisant un token CSRF, faites en sorte de vérifier que le formulaire d'ajout d'article provient bien de l'utilisateur et non d'un bot. Vous pouvez utiliser la fonction `uniqid()` pour générer un token unique ou utiliser la fonction `bin2hex(random_bytes(32))` pour générer un token aléatoire.
 Exemple: Lors de la connexion , créer un token dans la session user. Dans le formulaire d'ajout ou de modification d'article, créer un input hidden qui va contenir le token de la session user. Lors de la soumission du formulaire, vérifier que le token du formulaire est identique au token de la session user. Si c'est le cas, on peut faire le traitement du formulaire. Sinon, on le deconnecte et on le redirige vers la page de connexion.
 
-1. Sur la page `detail_article.php`, Si l'article appartient à l'utilisateur connecté, afficher un bouton `Modifier` et `Supprimer` sur l'article. Sinon afficher un bouton `Retour` qui va rediriger l'utilisateur vers la page `index.php` qui va afficher l'article en entier.
+2. Sur la page `detail_article.php`, Si l'article appartient à l'utilisateur connecté, afficher un bouton `Modifier` et `Supprimer` sur l'article. Sinon afficher un bouton `Retour` qui va rediriger l'utilisateur vers la page `index.php` qui va afficher l'article en entier.
 
-2. Faites en sorte de donner la possibilité à l'utilisateur de modifier son profil (nom, prénom, email et mot de passe).`Quasiment identique à la modification d'article sauf que l'on modifie les données de l'utilisateur connecté. Donc on va pré-remplir les champs du formulaire d'inscription avec les données de l'utilisateur connecté.`
+3. Faites en sorte de donner la possibilité à l'utilisateur de modifier son profil (nom, prénom, email et mot de passe).`Quasiment identique à la modification d'article sauf que l'on modifie les données de l'utilisateur connecté. Donc on va pré-remplir les champs du formulaire d'inscription avec les données de l'utilisateur connecté.`
 
 
