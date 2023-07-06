@@ -37,3 +37,44 @@ $personne2->afficherDetails();
 
 var_dump($personne1);
 var_dump($personne2);
+
+
+class Booking 
+{
+    public $date;
+    public $nbTickets;
+    public $client;
+    public $isValidate = true;
+
+    public function __construct($date, $nbTickets, $client)
+    {
+        $this->date = $date;
+        $this->nbTickets = $nbTickets;
+        $this->client = $client;
+    }
+
+
+    public function __clone()
+    {
+        $this->isValidate = false;
+    }
+
+    public function showInfo()
+    {
+        if($this->isValidate)
+        {
+            echo "La réservation du $this->date pour $this->nbTickets a été validée pour $this->client. <br>";
+        }else{
+            echo "La réservation du $this->date pour $this->nbTickets n'a pas été validée pour $this->client. <br>";
+        }
+    }
+
+}
+$booking1 = new Booking("2020-10-10", 2, "Jean Dupont");
+$booking1->showInfo(); 
+
+echo "<hr>";
+// On clone l'objet $booking1 dans $booking2.Donc la valeur de $booking2->isValidate passe à false.
+$booking2 = clone $booking1;
+$booking2->client = "Paul Durand";
+$booking2->showInfo();
