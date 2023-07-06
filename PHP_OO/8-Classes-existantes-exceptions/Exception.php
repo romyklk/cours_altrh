@@ -29,3 +29,17 @@ function division($a, $b)
 }
 division(10, 2);
 division(10, 0);
+
+echo "<hr>";
+
+//Connexion à une base de données
+try{
+
+    $bdd = new PDO('mysql:host=localhost;dbname=entreprise;charset=utf8', 'root', '');
+    echo "Connexion réussie <br>";
+
+}catch(PDOException $e){
+
+    echo "Message d'erreur : " . $e->getMessage() . " ". $e->getCode() . " " . $e->getFile() . " " . $e->getLine();
+
+}
