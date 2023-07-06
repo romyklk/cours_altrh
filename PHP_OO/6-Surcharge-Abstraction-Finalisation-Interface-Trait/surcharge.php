@@ -5,7 +5,6 @@ Surcharge ou override : est une notion de POO qui permet de modifier le comporte
 le mot clé "parent" permet d'accéder à la classe mère, et donc de récupérer ses éléments (méthodes ou propriétés) pour les réutiliser dans la classe enfant.
 
 */
-
 class A 
 {
     public function calcul()
