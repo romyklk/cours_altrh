@@ -45,7 +45,7 @@ interface Volant extends Roulant
 }
 
 // Si une classe hérite d'une interface, elle doit implémenter toutes les méthodes abstraites de l'interface et de ses interfaces parentes.
-class Camion extends Volant 
+class Camion implements Volant 
 {
     public function rouler()
     {
