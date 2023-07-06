@@ -4,7 +4,7 @@ Créez un projet PHP contenant deux classes dans des namespaces différents. La 
 
 La classe `Calculator` devra avoir une méthode statique appelée `add` qui prendra deux paramètres entiers et renverra leur somme.
 
-La classe `Logger` devra avoir une méthode statique appelée `log` qui prendra un paramètre de chaîne de caractères et l'affichera à l'écran.
+La classe `Logger` devra avoir une méthode statique appelée `log` qui prendra en argument une chaîne de caractères et l'affichera à l'écran.
 
 Dans un fichier `index.php`, importez les deux classes depuis leurs namespaces respectifs et utilisez-les pour effectuer une addition et afficher le résultat à l'aide de la méthode `log` du Logger.
 
