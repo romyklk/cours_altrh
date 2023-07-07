@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<h1 class="text-center">
-    S'inscrire <span class="text-muted">C'est rapide et facile</span>
+<h1 class="text-center text-white">
+    S'inscrire <span class="text-muted text-white">C'est rapide et facile</span>
 </h1>
 
 
@@ -47,40 +47,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?= $success; ?>
         <form action="inscription.php" method="post">
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="nom" class="form-label">👤</label>
                 <input type="text" class="form-control" id="nom" aria-describedby="nomHelp" placeholder="Entrez votre nom" name="nom">
 
                 <?php if (isset($errors) && in_array(User::NOM_INVALIDE, $errors)) : ?>
-                    <div id="nomHelp" class="form-text text-danger">Erreur sur le nom</div>
+                    <p id="nomHelp" class="form-text text-danger fw-bold">Erreur sur le nom</p>
                 <?php endif; ?>
 
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="prenom" class="form-label">🧑</label>
                 <input type="text" class="form-control" id="prenom" aria-describedby="prenomHelp" placeholder="Entrez votre prenom" name="prenom">
 
                 <?php if (isset($errors) && in_array(User::PRENOM_INVALIDE, $errors)) : ?>
-                    <div id="nomHelp" class="form-text text-danger">Erreur sur le prénom</div>
+                    <p id="nomHelp" class="form-text text-danger fw-bold">Erreur sur le prénom</p>
                 <?php endif; ?>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="email" class="form-label">📩</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrez votre email" name="email">
 
                 <?php if (isset($errors) && in_array(User::EMAIL_INVALIDE, $errors)) : ?>
-                    <div id="nomHelp" class="form-text text-danger">Erreur sur le mail</div>
+                    <p id="nomHelp" class="form-text text-danger fw-bold">Erreur sur le mail</p>
                 <?php endif; ?>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <label for="tel" class="form-label">☎️</label>
-                <input type="text" class="form-control" id="tel" aria-describedby="telHelp" placeholder="Entrez votre numero de telephone" name="tel">
+                <input type="text" class="form-control" id="tel" aria-describedby="telHelp" placeholder="Entrez votre numero de telephone " name="tel">
 
                 <?php if (isset($errors) && in_array(User::TEL_INVALIDE, $errors)) : ?>
-                    <div id="nomHelp" class="form-text text-danger">Erreur sur le tel</div>
+                    <p id="nomHelp" class="form-text text-danger fw-bold">Erreur sur le tel</p>
                 <?php endif; ?>
             </div>
 

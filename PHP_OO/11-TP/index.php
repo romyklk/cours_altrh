@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 
 /* 
@@ -10,7 +10,7 @@ ob_start() permet demarre la temporisation de sortie.C'est-à-dire que tout ce q
 ?>
 
 
-<h3 class="text-center dispay-3">
+<h3 class="text-center dispay-3 text-white">
     Bienvenue sur le site de gestion des utilisateurs
 </h3>
 

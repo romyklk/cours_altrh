@@ -21,7 +21,6 @@ class UserManager
         $query->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':tel', $user->getTel(), PDO::PARAM_STR);
         $query->execute();
-
     }
 
 }

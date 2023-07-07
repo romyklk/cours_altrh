@@ -3,7 +3,7 @@ ob_start();
 ?>
 
 
-<h1 class="text-center">
+<h1 class="text-center text-white">
     Gestion des utilisateurs
 </h1>
 
