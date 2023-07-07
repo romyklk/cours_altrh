@@ -25,10 +25,10 @@
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inscription</a>
+                        <a class="nav-link" href="inscription.php">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
+                        <a class="nav-link" href="admin.php">Admin</a>
                     </li>
             </div>
         </div>

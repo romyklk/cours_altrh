@@ -6,6 +6,7 @@ ob_start() permet demarre la temporisation de sortie.C'est-à-dire que tout ce q
 
 */
 
+
 ?>
 
 

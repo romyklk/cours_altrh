@@ -3,7 +3,7 @@ Dans cet TP on fera un petit système de gestion de membre.
 
 ## Base de données
 
-1. Créer une base de données `tp_poo` avec la table `membre` ayant les champs suivants:
+1. Créer une base de données `tp_poo_altrh` avec la table `membre` ayant les champs suivants:
     - id INT(3) Primary key auto_increment
     - nom VARCHAR(20)
     - prenom VARCHAR(20)
