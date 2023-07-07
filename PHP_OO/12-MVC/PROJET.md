@@ -46,9 +46,9 @@ Vous devez créer un gestionnaire de tâches qui permettra aux utilisateurs de c
    - `update($id)` : Traite les données du formulaire d'édition et met à jour une tâche existante.
    - `delete($id)` : Supprime une tâche.
 
-4. Dans le dossier `views/task/`, créez les fichiers `index.php`, `create.php` et `edit.php` qui seront responsables de l'affichage des vues correspondantes.
+4. Dans le dossier `views/task/`, créez les fichiers `show.php`, `create.php` et `edit.php` qui seront responsables de l'affichage des vues correspondantes.
 
-5. Dans le fichier `index.php` (dans le dossier `views/task/`), affichez la liste des tâches en utilisant les données fournies par le contrôleur `TaskController`. Ajoutez des liens pour créer, éditer et supprimer des tâches.
+5. Dans le fichier `show.php` (dans le dossier `views/task/`), affichez la liste des tâches en utilisant les données fournies par le contrôleur `TaskController`. Ajoutez des liens pour créer, éditer et supprimer des tâches.
 
 6. Dans le fichier `create.php` (dans le dossier `views/task/`), créez un formulaire permettant de saisir les informations d'une nouvelle tâche. Ce formulaire devra être soumis à la méthode `store()` du contrôleur `TaskController`.
 
@@ -98,7 +98,7 @@ Cette classe possède un constructeur qui utilise un `try/catch` pour se connect
   
       - 4. `updateTask($task)` qui prend en paramètre une instance de la classe `Task` et qui permet de modifier une tâche dans la base de données. Cette méthode doit utiliser la propriété `db` pour se connecter à la base de données .  Ensuite, elle doit utiliser la méthode `prepare()` de l'objet PDO pour préparer une requête SQL de modification dans la table `tasks` . Enfin, elle doit utiliser la méthode `execute()` de l'objet PDO pour exécuter la requête SQL préparée.
   
-      -  `deleteTaskFromDatabase($task)` qui prend en paramètre une instance de la classe `Task` et qui permet de supprimer une tâche dans la base de données. Cette méthode doit utiliser la propriété `db` pour se connecter à la base de données .  Ensuite, elle doit utiliser la méthode `prepare()` de l'objet PDO pour préparer une requête SQL de suppression dans la table `tasks` . Enfin, elle doit utiliser la méthode `execute()` de l'objet PDO pour exécuter la requête SQL préparée.
+      -  `deleteTask($task)` qui prend en paramètre une instance de la classe `Task` et qui permet de supprimer une tâche dans la base de données. Cette méthode doit utiliser la propriété `db` pour se connecter à la base de données .  Ensuite, elle doit utiliser la méthode `prepare()` de l'objet PDO pour préparer une requête SQL de suppression dans la table `tasks` . Enfin, elle doit utiliser la méthode `execute()` de l'objet PDO pour exécuter la requête SQL préparée.
 
       - `validateTaskData($title, $description)`qui prend en paramètre un titre et une description et qui permet de valider les données d'une tâche. Cette méthode doit retourner un tableau contenant les erreurs de validation. Si le tableau est vide, cela veut dire que les données sont valides donc return `true`. Si non, cela veut dire que les données ne sont pas valides. Les erreurs de validation sont les suivantes :
         - Le titre est requis.
@@ -160,3 +160,11 @@ Cette classe possède les méthodes suivantes :
  
 
 8.  `delete($id)` qui permet de supprimer une tâche. Cette méthode doit utiliser la méthode `getTask()` pour récupérer la tâche grâce à son identifiant. Ensuite, elle doit utiliser la méthode `deleteTask()` pour supprimer la tâche dans la base de données et afficher un message de succès. Enfin, elle doit rediriger l'utilisateur vers la page d'accueil.
+
+
+
+### D : Routes (index.php)
+
+Dans ce fichier , on va gérer le routage de notre application. On va utiliser la variable `$_GET` pour récupérer les paramètres de l'URL. 
+
+- Si la variable `$_GET['action']` existe, alors on va récupérer sa valeur dans la variable `$action` et on va utiliser la fonction `switch` pour exécuter la méthode correspondante dans la classe `TaskController` en utilisant la variable `$action` comme paramètre. Donc en fonction de la valeur de la variable `$_GET['action']` , on va exécuter une méthode différente dans la classe `TaskController` .
