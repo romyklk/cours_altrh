@@ -25,28 +25,7 @@ Dans cet TP on fera un petit système de gestion de membre.
 
 Exemple: d'hydratation:
 
-public function hydrate(array $data) {
-
-    foreach($data as $key => $value) {
-
-        $method = 'set' . ucfirst($key);
-
-        if(method_exists($this, $method)) {
-
-            $this->$method($value);
-
-        }
-
-    }
-
-}
-
-public function __construct(array $data) {
-
-    $this->hydrate($data);
-
-}
-
+![Exemple: d'hydratation](hydrataion.png)
 
 
 1. Créer 4 constantes de classe pour stocker les messages d'erreur sur les propriétés de la classe. Créer une propriété `errors` qui sera un tableau vide. Créer une méthode `getErrors` qui retournera le tableau `errors`.
