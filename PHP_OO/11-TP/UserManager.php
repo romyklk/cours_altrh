@@ -23,4 +23,17 @@ class UserManager
         $query->execute();
     }
 
+    public function getAllUsers()
+    {
+        $sql = "SELECT * FROM membre ORDER BY id DESC";
+
+        $query = $this->database->prepare($sql);
+        $query->execute();
+
+        $query->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'User');
+
+        $usersArray = $query->fetchAll();
+
+        return $usersArray;
+    }
 }

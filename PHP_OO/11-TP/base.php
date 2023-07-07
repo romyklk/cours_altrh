@@ -13,7 +13,7 @@
 
 <style>
     body {
-        height: 100vh;
+        min-height: 100vh;
         background: #0f0c29;
         /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
@@ -65,7 +65,7 @@
     </div>
 
 
-    <footer class="bg-secondary py-3">
+    <footer class="bg-dark py-3">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center text-white">

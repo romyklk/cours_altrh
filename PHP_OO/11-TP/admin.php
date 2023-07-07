@@ -1,5 +1,11 @@
 <?php
 ob_start();
+
+require_once "autoload.php";
+
+$pdo = Database::getPdo();
+
+$manger = new UserManager($pdo);
 ?>
 
 
@@ -21,15 +27,17 @@ ob_start();
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>06 77 77 77 77</td>
-                    <td>@mdo</td>
-                    <td><a href="" class="btn btn-warning">Update</a></td>
-                    <td><a href="" class="btn btn-danger">Delete</a></td>
-                </tr>
+                <?php
+                foreach ($manger->getAllUsers() as $user) : ?>
+                    <tr>
+                        <td><?= $user->getNom(); ?></td>
+                        <td><?= $user->getPrenom(); ?></td>
+                        <td><?= $user->getTel(); ?></td>
+                        <td><?= $user->getEmail(); ?></td>
+                        <td><a href="?action=update&id=<?= $user->getId(); ?>" class="btn btn-warning">Update</a></td>
+                        <td><a href="?action=delete&id=<?= $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')">Delete</a></td>
+                    </tr>
+                <?php endforeach; ?>
 
             </tbody>
         </table>

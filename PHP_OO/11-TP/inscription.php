@@ -1,9 +1,12 @@
 <?php
 ob_start();
 
-require_once "Database.php";
+/* require_once "Database.php";
 require_once "UserManager.php";
 require_once "User.php";
+ */
+
+require_once "autoload.php";
 
 $success = '';
 
@@ -36,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<h1 class="text-center text-white">
+<h1 class="text-center text-light">
     S'inscrire <span class="text-muted text-white">C'est rapide et facile</span>
 </h1>
 
