@@ -9,7 +9,7 @@ Vous devez créer un gestionnaire de tâches qui permettra aux utilisateurs de c
 
 
 - GestionnaireTaches/
-  - index.php
+  - index.php => `Point d'entrée de l'application`
   - models/
     - Task.php => `classe Task (qui représente une tâche)`
     - Database.php => `classe Database(qui gère la connexion à la base de données)`
