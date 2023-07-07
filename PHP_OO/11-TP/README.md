@@ -23,6 +23,26 @@ Dans cet TP on fera un petit système de gestion de membre.
 
 3. Cette classe aura un constructeur qui prendra en paramètre un tableau associatif avec les clés correspondant aux propriétés de la classe.(principe de l'hydratation)
 
+Exemple: d'hydratation:
+
+public function __construct(array $data) {
+    $this->hydrate($data);
+}
+
+public function hydrate(array $data) {
+
+    foreach($data as $key => $value) {
+
+        $method = 'set' . ucfirst($key);
+
+        if(method_exists($this, $method)) {
+            $this->$method($value);
+        }
+
+    }
+}
+
+
 4. Créer 4 constantes de classe pour stocker les messages d'erreur sur les propriétés de la classe. Créer une propriété `errors` qui sera un tableau vide. Créer une méthode `getErrors` qui retournera le tableau `errors`.
 
 5. Faire les contrôles suivants sur les propriétés de la classe:
