@@ -1,3 +1,7 @@
+<?php
+ob_start();
+?>
+
 
 <h1 class="text-center">
     Gestion des utilisateurs
@@ -34,3 +38,8 @@
 
 </div>
 
+<?php
+$content = ob_get_clean();
+$title = "Backoffice";
+require_once "base.php";
+?>
